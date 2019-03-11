@@ -270,7 +270,7 @@ void basicFunctions() {
 
 
     //send user data if found
-    if ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL)) {
+    if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) || ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL)) {
         int nr,user;
 
         sendCommand(TXbuffer);
