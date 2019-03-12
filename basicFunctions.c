@@ -268,10 +268,10 @@ void basicFunctions() {
         sendCommand(TXbuffer);
     }
 
-
+	
     //send user data if found
-    if (((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) || ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL))) {
-        int nr,user;
+    if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for D-Star - It's a test, need to search for callsing instead of DMR-ID
+        int nr,user;                                    //              if works, try to do it for the other modes
 
         sendCommand(TXbuffer);
 
@@ -314,5 +314,47 @@ void basicFunctions() {
         sendCommand("click S0,1");
     }
 
+    if ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL)) { // for DMR - TODO: Do the same for TS1
+        int nr,user;
 
+        sendCommand(TXbuffer);
+
+        user=0;
+        nr=atoi(&TXbuffer[12]);
+        if (nr>0) {
+            user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
+			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+        } else if (strstr(TXbuffer,"Listening")==NULL) {
+            TXbuffer[strlen(TXbuffer)-1]=' ';
+            char* l=strchr(&TXbuffer[12], ' ');
+            if (l!=NULL) l[0]=0;
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
+            user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
+			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
+        }
+
+        if (user>=0) {
+            sprintf(TXbuffer,"t13.txt=\"%s\"",users[user].data1);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t14.txt=\"%s\"",users[user].data2);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t15.txt=\"%s\"",users[user].data3);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t16.txt=\"%s\"",users[user].data4);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
+            sendCommand(TXbuffer);
+
+        } else if (nr>0) {
+            sprintf(TXbuffer,"t13.txt=\"DMRID %d\"",nr);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t14.txt=\"Not found in\"");
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t15.txt=\"%s\"",usersFile);
+            sendCommand(TXbuffer);
+        }
+        sprintf(text, "MMDVM.status.val=78");
+        sendCommand(text);
+        sendCommand("click S0,1");
+    }
 }
