@@ -244,7 +244,32 @@ void basicFunctions() {
     }
 
 
-    //send TG name if found
+    //send TG name if found for TS1
+    if ((page==2)&&(strstr(TXbuffer,"t1.txt")!=NULL)) {
+        char *TGname;
+        int nr,TGindex;
+        sendCommand(TXbuffer);
+        if ((TXbuffer[8]>='0')&&(TXbuffer[8]<='9'))
+            nr=atoi(&TXbuffer[8]);
+        else
+            nr=atoi(&TXbuffer[10]);
+        TGindex=search_group(nr,groups,0,nmbr_groups-1);
+        if (TGindex>=0) {
+            TGname=groups[TGindex].name;
+            sprintf(TXbuffer,"t9.txt=\"%s\"",TGname);
+        } else if (TGindex<0) {
+            //is it maybe a user private call ?
+            TGindex=search_user_index_for_ID(nr,users,0,nmbr_users-1);
+			writelog(LOG_DEBUG,"- Found [%s] for ID %d",users[TGindex].data1,TGindex);
+            if (TGindex>=0) sprintf(TXbuffer,"t9.txt=\"Private %s\"",users[TGindex].data1);
+        } else {
+            sprintf(TXbuffer,"t9.txt=\"TG%d name not found\"",nr);
+        }
+        sendCommand(TXbuffer);
+    }
+
+	
+    //send TG name if found for TS2
     if ((page==2)&&(strstr(TXbuffer,"t3.txt")!=NULL)) {
         char *TGname;
         int nr,TGindex;
@@ -267,8 +292,8 @@ void basicFunctions() {
         }
         sendCommand(TXbuffer);
     }
-
 	
+
     //send user data if found
     if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for D-Star - It's a test, need to search for callsing instead of DMR-ID
         int nr,user;                                    //              if works, try to do it for the other modes
@@ -314,7 +339,52 @@ void basicFunctions() {
         sendCommand("click S0,1");
     }
 
-    if ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL)) { // for DMR - TODO: Do the same for TS1
+    if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
+        int nr,user;
+
+        sendCommand(TXbuffer);
+
+        user=0;
+        nr=atoi(&TXbuffer[12]);
+        if (nr>0) {
+            user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
+			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+        } else if (strstr(TXbuffer,"Listening")==NULL) {
+            TXbuffer[strlen(TXbuffer)-1]=' ';
+            char* l=strchr(&TXbuffer[12], ' ');
+            if (l!=NULL) l[0]=0;
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
+            user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
+			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
+        }
+
+        if (user>=0) {
+            sprintf(TXbuffer,"t23.txt=\"%s\"",users[user].data1);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t24.txt=\"%s\"",users[user].data2);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t25.txt=\"%s\"",users[user].data3);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t26.txt=\"%s\"",users[user].data4);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t27.txt=\"%s\"",users[user].data5);
+            sendCommand(TXbuffer);
+
+        } else if (nr>0) {
+            sprintf(TXbuffer,"t23.txt=\"DMRID %d\"",nr);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t24.txt=\"Not found in\"");
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t25.txt=\"%s\"",usersFile);
+            sendCommand(TXbuffer);
+        }
+        sprintf(text, "MMDVM.status.val=79");
+        sendCommand(text);
+        sendCommand("click S0,1");
+    }
+
+	
+    if ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL)) { // for DMR - TS2
         int nr,user;
 
         sendCommand(TXbuffer);
