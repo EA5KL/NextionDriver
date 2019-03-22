@@ -301,18 +301,17 @@ void basicFunctions() {
         sendCommand(TXbuffer);
 
         user=0;
-        nr=atoi(&TXbuffer[12]);
+        nr=atoi(&TXbuffer[10]);
         if (nr>0) {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
             TXbuffer[strlen(TXbuffer)-1]=' ';
-            char* l=strchr(&TXbuffer[12], ' ');
+            char* l=strchr(&TXbuffer[10], ' ');
             if (l!=NULL) l[0]=0;
-            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
-	    user=search_user_array_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
-            //user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[10]);
+            user=search_user_index_for_CALL(&TXbuffer[10],usersCALL_IDX,0,nmbr_users-1);
+			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
         }
 
         if (user>=0) {
