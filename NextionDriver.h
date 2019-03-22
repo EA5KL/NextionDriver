@@ -72,6 +72,7 @@ typedef struct userdata
     char *data3;
     char *data4;
     char *data5;
+    char *data6;
 } user_t;
 
 typedef struct user_idx_data{
