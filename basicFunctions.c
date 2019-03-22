@@ -299,6 +299,9 @@ void basicFunctions() {
         int nr,user;                                    //              if works, try to do it for the other modes
 
         sendCommand(TXbuffer);
+	    
+sprintf(TXbuffer,"t17.txt=\"%s\"",TXbuffer);
+sendCommand(TXbuffer);
 
         user=0;
         nr=atoi(&TXbuffer[10]);
