@@ -300,9 +300,6 @@ void basicFunctions() {
 
         sendCommand(TXbuffer);
 	    
-sprintf(TXbuffer,"t17.txt=\"%s\"",TXbuffer);
-sendCommand(TXbuffer);
-
         user=0;
         nr=atoi(&TXbuffer[10]);
         if (nr>0) {
@@ -317,7 +314,7 @@ sendCommand(TXbuffer);
 			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
         }
 
-        if (user>=0) {
+        if (user>0) {
             sprintf(TXbuffer,"t13.txt=\"%s\"",users[user].data1);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t14.txt=\"%s\"",users[user].data2);
@@ -328,16 +325,18 @@ sendCommand(TXbuffer);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t18.txt=\"%s\"",users[user].data6);
+            sendCommand(TXbuffer);
 
-        } else if (nr>0) {
-            sprintf(TXbuffer,"t13.txt=\"DMRID %d\"",nr);
+        } else if (user==-1) {
+            sprintf(TXbuffer,"t14.txt=\"D-Star \"%s\"",&TXbuffer[10]);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t14.txt=\"Not found in\"");
+            sprintf(TXbuffer,"t15.txt=\"Not found in\"");
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t15.txt=\"%s\"",usersFile);
+            sprintf(TXbuffer,"t16.txt=\"%s\"",usersFile);
             sendCommand(TXbuffer);
         }
-        sprintf(text, "MMDVM.status.val=78");
+        sprintf(text, "MMDVM.status.val=49");
         sendCommand(text);
         sendCommand("click S0,1");
     }
