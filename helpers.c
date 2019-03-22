@@ -775,7 +775,7 @@ void readUserDB(void){
 
     char buffer[BUFFER_SZ];
     int nr,i;
-    char *key[8],*next;
+    char *key[9],*next;
     char *niks = "";
 
     while (fgets(buffer, BUFFER_SZ, fp) != NULL) {
@@ -788,9 +788,9 @@ void readUserDB(void){
         if (next == NULL) continue;
         nr=atoi(next);
 
-        for(i=0;i<8;i++)key[i]=niks;
+        for(i=0;i<9;i++)key[i]=niks;
         i=0;
-        while((i<7)&&(next != NULL))
+        while((i<8)&&(next != NULL))
         {
             key[i++]=next;
             next = strtok(NULL,",");
