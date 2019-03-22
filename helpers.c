@@ -668,7 +668,11 @@ int insert_user(user_t table[], int nr, void *new_data1, void *new_data2, void *
     table[nmbr_users].data5 = malloc(size);
     memcpy(table[nmbr_users].data5,new_data5,size);
 
-//printf("User index %5d: %d = [%s][%s][%s][%s][%s]\n", nmbr_users, table[nmbr_users].nr, table[nmbr_users].data1, table[nmbr_users].data2, table[nmbr_users].data3, table[nmbr_users].data4, table[nmbr_users].data5);
+    size=strlen(new_data6)+1;
+    table[nmbr_users].data6 = malloc(size);
+    memcpy(table[nmbr_users].data6,new_data6,size);
+
+//printf("User index %5d: %d = [%s][%s][%s][%s][%s][%s]\n", nmbr_users, table[nmbr_users].nr, table[nmbr_users].data1, table[nmbr_users].data2, table[nmbr_users].data3, table[nmbr_users].data4, table[nmbr_users].data5, table[nmbr_users].data6);
 	
     nmbr_users++;
 
@@ -792,9 +796,9 @@ void readUserDB(void){
             next = strtok(NULL,",");
         }
         if ((strlen(key[1])>1)&&(i>=2)) {
-//            printf("%5d Pushing [%d] [%s] [%s] [%s] [%s]  [%s]\n",nmbr_users, nr, key[1], key[2], key[3], key[4], key[6]);fflush(NULL);
+//            printf("%5d Pushing [%d] [%s] [%s] [%s] [%s] [%s] [%s]\n",nmbr_users, nr, key[1], key[2], key[3], key[4], key[5], key[6]);fflush(NULL);
 //            usleep(100000);
-            if (insert_user(users, nr, key[1], key[2], key[3], key[4], key[6])==0) break;
+            if (insert_user(users, nr, key[1], key[2], key[3], key[4], key[4], key[5])==0) break;
         }
 //		else printf("Not inserting [%s]\n",key[1]);
 		
