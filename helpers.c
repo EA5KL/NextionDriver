@@ -593,7 +593,7 @@ void print_users() {
     int i;
 
     for (i=0; i<nmbr_users;i++)
-        printf("User %5d: %d = [%s][%s][%s][%s][%s]\n", i, users[i].nr, users[i].data1, users[i].data2, users[i].data3, users[i].data4, users[i].data5, users[i].data6);
+        printf("User %5d: %d = [%s][%s][%s][%s][%s][%s]\n", i, users[i].nr, users[i].data1, users[i].data2, users[i].data3, users[i].data4, users[i].data5, users[i].data6);
 }
 
 void print_call_id() {
