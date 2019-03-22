@@ -314,7 +314,7 @@ void basicFunctions() {
 			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
         }
 
-        if (user>0) {
+        if (user>=0) {
             sprintf(TXbuffer,"t13.txt=\"%s\"",users[user].data1);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t14.txt=\"%s\"",users[user].data2);
