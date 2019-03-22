@@ -593,7 +593,7 @@ void print_users() {
     int i;
 
     for (i=0; i<nmbr_users;i++)
-        printf("User %5d: %d = [%s][%s][%s][%s][%s]\n", i, users[i].nr, users[i].data1, users[i].data2, users[i].data3, users[i].data4, users[i].data5);
+        printf("User %5d: %d = [%s][%s][%s][%s][%s]\n", i, users[i].nr, users[i].data1, users[i].data2, users[i].data3, users[i].data4, users[i].data5, users[i].data6);
 }
 
 void print_call_id() {
@@ -632,7 +632,7 @@ int insert_user_call_idx(user_call_idx_t table[], int index, void *call, int nr)
 }
 
 
-int insert_user(user_t table[], int nr, void *new_data1, void *new_data2, void *new_data3, void *new_data4, void *new_data5)
+int insert_user(user_t table[], int nr, void *new_data1, void *new_data2, void *new_data3, void *new_data4, void *new_data5, void *new_data6)
 {
     char *m;
 
@@ -798,7 +798,7 @@ void readUserDB(void){
         if ((strlen(key[1])>1)&&(i>=2)) {
 //            printf("%5d Pushing [%d] [%s] [%s] [%s] [%s] [%s] [%s]\n",nmbr_users, nr, key[1], key[2], key[3], key[4], key[5], key[6]);fflush(NULL);
 //            usleep(100000);
-            if (insert_user(users, nr, key[1], key[2], key[3], key[4], key[4], key[5])==0) break;
+            if (insert_user(users, nr, key[1], key[2], key[3], key[4], key[5], key[6])==0) break;
         }
 //		else printf("Not inserting [%s]\n",key[1]);
 		
