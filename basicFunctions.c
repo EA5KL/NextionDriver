@@ -310,7 +310,8 @@ void basicFunctions() {
             char* l=strchr(&TXbuffer[12], ' ');
             if (l!=NULL) l[0]=0;
             writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
-            user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
+	    user=search_user_array_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1)
+            //user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
         }
 
