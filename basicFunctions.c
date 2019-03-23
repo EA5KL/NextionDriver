@@ -305,7 +305,7 @@ void basicFunctions() {
 	    
         user=0;
   	nr=strtol(TXbuffer,&temp,10); // using base 10
-  	if (temp!=TXbuffer && *temp=='\0')
+  	if (temp!=TXbuffer && *temp=='\0') {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
