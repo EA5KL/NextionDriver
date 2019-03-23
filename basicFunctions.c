@@ -297,18 +297,15 @@ void basicFunctions() {
 
     //send user data if found
     if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for D-Star - It's a test, need to search for callsing instead of DMR-ID
-        int nr,user,pos;                                    //              if works, try to do it for the other modes
-		char CallorID[9];
-
+        int user;                                    //              if works, try to do it for the other modes
+	long nr;
+	char *temp;
+	    
         sendCommand(TXbuffer);
 	    
         user=0;
-		strncpy(CallorID,TXbuffer+10,strchr(&TXbuffer[10], ' '));
-sprintf(TXbuffer,"t18.txt=\"%s\"",CallorID);
-sendCommand(TXbuffer);
-		
-        nr=atoi(&TXbuffer[10]);
-        if (nr>0) {
+  	nr=strtol(TXbuffer,&temp,10); // using base 10
+  	if (temp!=TXbuffer && *temp=='\0')
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
