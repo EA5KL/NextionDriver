@@ -546,7 +546,7 @@ static void terminate(int sig)
     sendCommand("cls 0");
     sendCommand("dim=50");
     sendCommand("t0.txt=\"NextionDriver\"");
-    sendCommand("t2.txt=\"Stopped\"");
+    sendCommand("t1.txt=\"Stopped\"");
     usleep(5000);
 
     writelog(LOG_ERR, "NextionDriver V%s terminated on signal %s (%s)",NextionDriver_VERSION,signame[sig],strsignal(sig));
@@ -598,7 +598,7 @@ int main(int argc, char *argv[])
                 break;
             case 'V':
                 printf("\nNextionDriver version %s\n", NextionDriver_VERSION);
-                printf("Copyright (C) 2017...2019 ON7LDS. All rights reserved.\n\n");
+                printf("Copyright (C) 2017...2019 ON7LDS & EA5KL. All rights reserved.\n\n");
                 return 0;
                 break;
             case 'v':
@@ -624,7 +624,7 @@ int main(int argc, char *argv[])
             case 'h':
             case ':':
                 printf("\nNextionDriver version %s\n", NextionDriver_VERSION);
-                printf("Copyright (C) 2017...2019 ON7LDS. All rights reserved.\n");
+                printf("Copyright (C) 2017...2019 ON7LDS & EA5KL. All rights reserved.\n");
                 printf("\nUsage: %s -c <MMDVM config file> [-f] [-d] [-h]\n\n", argv[0]);
                 printf("  -c\tspecify the MMDVM config file, which has to be extended with the NetxtionDriver config\n");
                 printf("  -f\tspecify the directory with data files (groups, users)\n");
@@ -646,7 +646,7 @@ int main(int argc, char *argv[])
     } else printf("Starting in console mode...\n");
 
     writelog(2,"NextionDriver version %s", NextionDriver_VERSION);
-    writelog(2,"Copyright (C) 2017...2019 ON7LDS. All rights reserved.");
+    writelog(2,"Copyright (C) 2017...2019 ON7LDS & EA5KL. All rights reserved.");
 
     writelog(2,"Starting with verbose level %d", verbose);
 
@@ -732,7 +732,7 @@ int main(int argc, char *argv[])
     sendCommand("cls 0");
     sendCommand("dim=100");
     sendCommand("t0.txt=\"NextionDriver\"");
-    sendCommand("t2.txt=\"Started\"");
+    sendCommand("t1.txt=\"Started\"");
     sprintf(TXbuffer,"ussp=%d",sleepWhenInactive);
     sendCommand(TXbuffer);
     sendCommand("thup=1");
