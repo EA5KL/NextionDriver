@@ -352,21 +352,21 @@ void basicFunctions() {
     }
 
     if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
-        int user,isDigit,j;
+        int user,isNumber,j;
 		long nr;
 		char *temp;
 
         sendCommand(TXbuffer);
 
         user=0;
-		isDigit=1;
+		isNumber=1;
 		char* CallorID=strchr(&TXbuffer[12], ' '); // returns a string that contains the Callsign or CSS7 ID
 		while(j<strlen(CallorID)){
-			isDigit = isdigit(CallorID[j]);
-			if (isDigit == 0) break;
+			isNumber = isdigit(CallorID[j]);
+			if (isNumber == 0) break;
 			j++;
 		}
-		if (isDigit==1) { 
+		if (isNumber==1) { 
 			CallorID+="\0":
 			nr=strtol(CallorID,NULL,10);
 			user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
