@@ -21,6 +21,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <sys/types.h>
 #include <ifaddrs.h>
 #include <netinet/in.h>
