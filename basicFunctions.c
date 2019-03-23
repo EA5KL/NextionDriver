@@ -368,7 +368,7 @@ void basicFunctions() {
 			j++;
 		}
 		if (isNumber==1) { 
-			CallorID+="\0":
+//			CallorID+="\0";
 			nr=strtol(CallorID,NULL,10);
 			user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 					writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
