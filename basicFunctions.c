@@ -345,13 +345,15 @@ void basicFunctions() {
     }
 
     if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
-        int nr,user;
+        int user;
+	long nr;
+	char *temp;
 
         sendCommand(TXbuffer);
 
         user=0;
-        nr=atoi(&TXbuffer[12]);
-        if (nr>0) {
+  	nr=strtol(TXbuffer,&temp,10); // using base 10
+  	if (temp!=TXbuffer && *temp=='\0') {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
@@ -374,6 +376,8 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t27.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t28.txt=\"%s\"",users[user].data5);
+            sendCommand(TXbuffer);
 
         } else if (nr>0) {
             sprintf(TXbuffer,"t23.txt=\"DMRID %d\"",nr);
@@ -395,8 +399,8 @@ void basicFunctions() {
         sendCommand(TXbuffer);
 
         user=0;
-        nr=atoi(&TXbuffer[12]);
-        if (nr>0) {
+  	nr=strtol(TXbuffer,&temp,10); // using base 10
+  	if (temp!=TXbuffer && *temp=='\0') {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
@@ -418,6 +422,8 @@ void basicFunctions() {
             sprintf(TXbuffer,"t16.txt=\"%s\"",users[user].data4);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t18.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
 
         } else if (nr>0) {
