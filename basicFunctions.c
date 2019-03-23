@@ -352,7 +352,7 @@ void basicFunctions() {
         sendCommand(TXbuffer);
 
         user=0;
-  	nr=strtol(TXbuffer,&temp,10); // using base 10
+  	nr=strtol(TXbuffer,&temp,12); // using base 10
   	if (temp!=TXbuffer && *temp=='\0') {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
@@ -399,7 +399,7 @@ void basicFunctions() {
         sendCommand(TXbuffer);
 
         user=0;
-  	nr=strtol(TXbuffer,&temp,10); // using base 10
+  	nr=strtol(TXbuffer,&temp,12); // using base 10
   	if (temp!=TXbuffer && *temp=='\0') {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
