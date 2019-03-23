@@ -332,12 +332,19 @@ void basicFunctions() {
             sendCommand(TXbuffer);
 
         } else if (user==-1) {
+            sprintf(TXbuffer,"t13.txt=\"%s\"","");
+            sendCommand(TXbuffer);
             sprintf(TXbuffer,"t14.txt=\"D-Star \"%s\"",&TXbuffer[10]);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t15.txt=\"Not found in\"");
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t16.txt=\"%s\"",usersFile);
             sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t17.txt=\"%s\"","");
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t18.txt=\"%s\"","");
+            sendCommand(TXbuffer);
+
         }
         sprintf(text, "MMDVM.status.val=49");
         sendCommand(text);
@@ -376,15 +383,21 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t27.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t28.txt=\"%s\"",users[user].data5);
+            sprintf(TXbuffer,"t28.txt=\"%s\"",users[user].data6);
             sendCommand(TXbuffer);
 
         } else if (nr>0) {
-            sprintf(TXbuffer,"t23.txt=\"DMRID %d\"",nr);
+            sprintf(TXbuffer,"t23.txt=\"%s\"","");
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t24.txt=\"Not found in\"");
+            sprintf(TXbuffer,"t24.txt=\"DMRID %d\"",nr);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t25.txt=\"%s\"",usersFile);
+            sprintf(TXbuffer,"t25.txt=\"Not found in\"");
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t26.txt=\"%s\"",usersFile);
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t27.txt=\"%s\"","");
+            sendCommand(TXbuffer);
+            sprintf(TXbuffer,"t28.txt=\"%s\"","");
             sendCommand(TXbuffer);
         }
         sprintf(text, "MMDVM.status.val=79");
@@ -423,15 +436,15 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t18.txt=\"%s\"",users[user].data5);
+            sprintf(TXbuffer,"t18.txt=\"%s\"",users[user].data6);
             sendCommand(TXbuffer);
 
         } else if (nr>0) {
-            sprintf(TXbuffer,"t13.txt=\"DMRID %d\"",nr);
+            sprintf(TXbuffer,"t14.txt=\"DMRID %d\"",nr);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t14.txt=\"Not found in\"");
+            sprintf(TXbuffer,"t15.txt=\"Not found in\"");
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t15.txt=\"%s\"",usersFile);
+            sprintf(TXbuffer,"t16.txt=\"%s\"",usersFile);
             sendCommand(TXbuffer);
         }
         sprintf(text, "MMDVM.status.val=78");
