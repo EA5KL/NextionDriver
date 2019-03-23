@@ -312,7 +312,7 @@ void basicFunctions() {
             TXbuffer[strlen(TXbuffer)-1]=' ';
             char* l=strchr(&TXbuffer[10], ' ');
             if (l!=NULL) l[0]=0;
-            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[10]);
+            		writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[10]);
             user=search_user_index_for_CALL(&TXbuffer[10],usersCALL_IDX,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
         }
@@ -352,27 +352,32 @@ void basicFunctions() {
     }
 
     if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
-        int user;
-	long nr;
-	char *temp;
+        int user,isDigit,j;
+		long nr;
+		char *temp;
 
         sendCommand(TXbuffer);
 
         user=0;
-  	nr=strtol(TXbuffer,&temp,12); // using base 10
-  	if (temp!=TXbuffer && *temp=='\0') {
-            user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
-        } else if (strstr(TXbuffer,"Listening")==NULL) {
-            TXbuffer[strlen(TXbuffer)-1]=' ';
-            char* l=strchr(&TXbuffer[12], ' ');
-            if (l!=NULL) l[0]=0;
-            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
-            user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
+		isDigit=1;
+		char* CallorID=strchr(&TXbuffer[12], ' '); // returns a string that contains the Callsign or CSS7 ID
+		while(j<strlen(CallorID)){
+			isDigit = isdigit(CallorID[j]);
+			if (isDigit == 0) break;
+			j++;
+		}
+		if (isDigit==1) { 
+			CallorID+="\0":
+			nr=strtol(CallorID,NULL,10);
+			user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
+					writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+		} else {
+					writelog(LOG_DEBUG,"Search for call [%s] \n",&CallorID);
+			user=search_user_index_for_CALL(&CallorID,usersCALL_IDX,0,nmbr_users-1);
+					writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&CallorID);
         }
 
-        if (user>=0) {
+        if (user>0) {
             sprintf(TXbuffer,"t23.txt=\"%s\"",users[user].data1);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t24.txt=\"%s\"",users[user].data2);
@@ -386,7 +391,7 @@ void basicFunctions() {
             sprintf(TXbuffer,"t28.txt=\"%s\"",users[user].data6);
             sendCommand(TXbuffer);
 
-        } else if (nr>0) {
+        } else {
             sprintf(TXbuffer,"t23.txt=\"%s\"","");
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t24.txt=\"DMRID %d\"",nr);
@@ -420,7 +425,7 @@ void basicFunctions() {
             TXbuffer[strlen(TXbuffer)-1]=' ';
             char* l=strchr(&TXbuffer[12], ' ');
             if (l!=NULL) l[0]=0;
-            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
+            		writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
             user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
 			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
         }
