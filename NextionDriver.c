@@ -543,10 +543,11 @@ static void terminate(int sig)
     sendCommand("sleep=0");
     sendCommand("ussp=0");
     sendCommand("page 0");
-    sendCommand("cls 0");
     sendCommand("dim=50");
-    sendCommand("t0.txt=\"NextionDriver\"");
+    sprintf("t0.txt=\"NextionDriver %s\"",NextionDriver_VERSION);
+    sendCommand(TXbuffer);
     sendCommand("t1.txt=\"Stopped\"");
+    sendCommand("cls 0");
     usleep(5000);
 
     writelog(LOG_ERR, "NextionDriver V%s terminated on signal %s (%s)",NextionDriver_VERSION,signame[sig],strsignal(sig));
@@ -731,7 +732,8 @@ int main(int argc, char *argv[])
     sendCommand("cls 0");
     sendCommand("page 0");
     sendCommand("dim=100");
-    sendCommand("t0.txt=\"NextionDriver\"");
+    sprintf("t0.txt=\"NextionDriver %s\"",NextionDriver_VERSION);
+    sendCommand(TXbuffer);
     sendCommand("t1.txt=\"Started\"");
     sprintf(TXbuffer,"ussp=%d",sleepWhenInactive);
     sendCommand(TXbuffer);
