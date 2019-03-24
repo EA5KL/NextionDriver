@@ -389,7 +389,7 @@ void basicFunctions() {
     }
 
 	
-    if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
+    if ((page==2)&&(strstr(TXbuffer,"t2.txt")!=NULL)) { // for DMR - TS2
         int user;
 
         sendCommand(TXbuffer);
