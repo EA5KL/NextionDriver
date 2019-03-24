@@ -728,8 +728,8 @@ int main(int argc, char *argv[])
     if (flash==0) writelog(LOG_ERR,"No Nextion display found.");
 
     sendCommand("sleep=0");
-    sendCommand("page 0");
     sendCommand("cls 0");
+    sendCommand("page 0");
     sendCommand("dim=100");
     sendCommand("t0.txt=\"NextionDriver\"");
     sendCommand("t1.txt=\"Started\"");
