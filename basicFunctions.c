@@ -298,24 +298,22 @@ void basicFunctions() {
 
     //send user data if found
     if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for D-Star - It's a test, need to search for callsing instead of DMR-ID
-        int user;                                    //              if works, try to do it for the other modes
-	long nr;
-	char *temp;
-	    
+        int nr,user;
+
         sendCommand(TXbuffer);
-	    
+
         user=0;
-  	nr=strtol(TXbuffer,&temp,10); // using base 10
-  	if (temp!=TXbuffer && *temp=='\0') {
+        nr=atoi(&TXbuffer[10]);
+        if (nr>0) {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+            writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
             TXbuffer[strlen(TXbuffer)-1]=' ';
             char* l=strchr(&TXbuffer[10], ' ');
             if (l!=NULL) l[0]=0;
-            		writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[10]);
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[10]);
             user=search_user_index_for_CALL(&TXbuffer[10],usersCALL_IDX,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
+            writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
         }
 
         if (user>=0) {
@@ -353,29 +351,22 @@ void basicFunctions() {
     }
 
     if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
-        int user,isNumber,j;
-		long nr;
-		char *temp;
+        int nr,user;
 
         sendCommand(TXbuffer);
 
         user=0;
-		isNumber=1;
-		char* CallorID=strchr(&TXbuffer[12], ' '); // returns a string that contains the Callsign or CSS7 ID
-		while(j<strlen(CallorID)){
-			isNumber = isdigit(CallorID[j]);
-			if (isNumber == 0) break;
-			j++;
-		}
-		if (isNumber==1) { 
-//			CallorID+="\0";
-			nr=strtol(CallorID,NULL,10);
-			user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
-					writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
-		} else {
-					writelog(LOG_DEBUG,"Search for call [%s] \n",&CallorID);
-			user=search_user_index_for_CALL(&CallorID,usersCALL_IDX,0,nmbr_users-1);
-					writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&CallorID);
+        nr=atoi(&TXbuffer[12]);
+        if (nr>0) {
+            user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
+            writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+        } else if (strstr(TXbuffer,"Listening")==NULL) {
+            TXbuffer[strlen(TXbuffer)-1]=' ';
+            char* l=strchr(&TXbuffer[12], ' ');
+            if (l!=NULL) l[0]=0;
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
+            user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
+            writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
         }
 
         if (user>0) {
@@ -418,20 +409,20 @@ void basicFunctions() {
         sendCommand(TXbuffer);
 
         user=0;
-  	nr=strtol(TXbuffer,&temp,12); // using base 10
-  	if (temp!=TXbuffer && *temp=='\0') {
+        nr=atoi(&TXbuffer[12]);
+        if (nr>0) {
             user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+            writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
         } else if (strstr(TXbuffer,"Listening")==NULL) {
             TXbuffer[strlen(TXbuffer)-1]=' ';
             char* l=strchr(&TXbuffer[12], ' ');
             if (l!=NULL) l[0]=0;
-            		writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
             user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
-			writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
+            writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
         }
 
-        if (user>=0) {
+	if (user>=0) {
             sprintf(TXbuffer,"t13.txt=\"%s\"",users[user].data1);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t14.txt=\"%s\"",users[user].data2);
