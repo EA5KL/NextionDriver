@@ -547,8 +547,8 @@ static void terminate(int sig)
     sprintf(TXbuffer,"t0.txt=\"NextionDriver %s\"",NextionDriver_VERSION);
     sendCommand(TXbuffer);
     sendCommand("t1.txt=\"Stopped\"");
-    sendCommand("cls 0");
     usleep(5000);
+    sendCommand("cls 0");
 
     writelog(LOG_ERR, "NextionDriver V%s terminated on signal %s (%s)",NextionDriver_VERSION,signame[sig],strsignal(sig));
     close(fd1);
