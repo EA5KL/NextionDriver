@@ -433,7 +433,7 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t18.txt=\"%s\"",&TXbuffer[12]) // users[user].data6);
+            sprintf(TXbuffer,"t18.txt=\"%s\"",&TXbuffer[12]); // users[user].data6);
             sendCommand(TXbuffer);
 
         } else {
