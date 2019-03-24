@@ -334,7 +334,7 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t14.txt=\"D-Star \"%s\"",&TXbuffer[10]);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t15.txt=\"Not found in\"");
+            sprintf(TXbuffer,"t15.txt=\"not found in\"");
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t16.txt=\"%s\"",usersFile);
             sendCommand(TXbuffer);
@@ -367,7 +367,14 @@ void basicFunctions() {
             writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[12]);
             user=search_user_index_for_CALL(&TXbuffer[12],usersCALL_IDX,0,nmbr_users-1);
             writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[12]);
-        }
+        } else {
+            sendCommand("t23.txt=\"\"");
+            sendCommand("t24.txt=\"\"");
+            sendCommand("t25.txt=\"\"");
+            sendCommand("t26.txt=\"\"");
+            sendCommand("t27.txt=\"\"");
+            sendCommand("t28.txt=\"\"");
+	}
 
         if (user>0) {
             sprintf(TXbuffer,"t23.txt=\"%s\"",users[user].data1);
@@ -389,7 +396,7 @@ void basicFunctions() {
             //sprintf(TXbuffer,"t24.txt=\"Callsign\"",nr);
             sendCommand("t24.txt=\"Callsign\"");
             //sprintf(TXbuffer,"t25.txt=\"Not found in\"");
-            sendCommand("t25.txt=\"Not found in\"");
+            sendCommand("t25.txt=\"not found in\"");
             //sprintf(TXbuffer,"t26.txt=\"in database\"",usersFile);
             sendCommand("t26.txt=\"in database\"");
             //sprintf(TXbuffer,"t27.txt=\"%s\"","");
