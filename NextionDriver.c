@@ -544,7 +544,7 @@ static void terminate(int sig)
     sendCommand("ussp=0");
     sendCommand("page 0");
     sendCommand("dim=50");
-    sprintf(TXbuffer,"t0.txt=\"NextionDriver %s\"",NextionDriver_VERSION);
+    sprintf(TXbuffer,"t0.txt=\"NextionDriver v%s\"",NextionDriver_VERSION);
     sendCommand(TXbuffer);
     sendCommand("t1.txt=\"MMDVM STOPPING\"");
     usleep(5000);
@@ -732,7 +732,7 @@ int main(int argc, char *argv[])
     sendCommand("cls 0");
     sendCommand("page 0");
     sendCommand("dim=100");
-    sprintf(TXbuffer,"t0.txt=\"NextionDriver %s\"",NextionDriver_VERSION);
+    sprintf(TXbuffer,"t0.txt=\"NextionDriver v%s\"",NextionDriver_VERSION);
     sendCommand(TXbuffer);
     sendCommand("t1.txt=\"MMDVM STARTING\"");
     sprintf(TXbuffer,"ussp=%d",sleepWhenInactive);
