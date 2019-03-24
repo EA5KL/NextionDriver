@@ -391,17 +391,11 @@ void basicFunctions() {
             sendCommand(TXbuffer);
 
         } else {
-            //sprintf(TXbuffer,"t23.txt=\"%s\"","");
             sendCommand("t23.txt=\"\"");
-            //sprintf(TXbuffer,"t24.txt=\"Callsign\"",nr);
             sendCommand("t24.txt=\"Callsign\"");
-            //sprintf(TXbuffer,"t25.txt=\"Not found in\"");
             sendCommand("t25.txt=\"not found in\"");
-            //sprintf(TXbuffer,"t26.txt=\"in database\"",usersFile);
             sendCommand("t26.txt=\"in database\"");
-            //sprintf(TXbuffer,"t27.txt=\"%s\"","");
             sendCommand("t27.txt=\"\"");
-            //sprintf(TXbuffer,"t28.txt=\"%s\"","");
             sendCommand("t28.txt=\"\"");
         }
         sprintf(text, "MMDVM.status.val=79");
