@@ -380,7 +380,7 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t27.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t28.txt=\"%s\"",users[user].data6);
+            sprintf(TXbuffer,"t28.txt=\"%s\"",&TXbuffer[12]); //users[user].data6);
             sendCommand(TXbuffer);
 
         } else {
@@ -433,10 +433,10 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t18.txt=\"%s\"",users[user].data6);
+            sprintf(TXbuffer,"t18.txt=\"%s\"",&TXbuffer[12]) // users[user].data6);
             sendCommand(TXbuffer);
 
-        } else if (nr>0) {
+        } else {
             sprintf(TXbuffer,"t14.txt=\"DMRID %d\"",nr);
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t15.txt=\"Not found in\"");
