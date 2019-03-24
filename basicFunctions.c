@@ -351,16 +351,17 @@ void basicFunctions() {
     }
 
     if ((page==2)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for DMR - TS1
-        int nr,user;
+        int user; //nr,
 
         sendCommand(TXbuffer);
 
         user=0;
-        nr=atoi(&TXbuffer[12]);
-        if (nr>0) {
-            user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
-            writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
-        } else if (strstr(TXbuffer,"Listening")==NULL) {
+        //nr=atoi(&TXbuffer[12]);
+        //if (nr>0) {
+        //    user=search_user_index_for_ID(nr,users,0,nmbr_users-1);
+        //    writelog(LOG_DEBUG,"- Found user [%s] for ID %d",users[user].data1,user);
+        //} else 
+	if (strstr(TXbuffer,"Listening")==NULL) {
             TXbuffer[strlen(TXbuffer)-1]=' ';
             char* l=strchr(&TXbuffer[12], ' ');
             if (l!=NULL) l[0]=0;
@@ -380,22 +381,22 @@ void basicFunctions() {
             sendCommand(TXbuffer);
             sprintf(TXbuffer,"t27.txt=\"%s\"",users[user].data5);
             sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t28.txt=\"%s\"",&TXbuffer[12]); //users[user].data6);
+            sprintf(TXbuffer,"t28.txt=\"%s\"",users[user].data6);
             sendCommand(TXbuffer);
 
         } else {
-            sprintf(TXbuffer,"t23.txt=\"%s\"","");
-            sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t24.txt=\"DMRID %d\"",nr);
-            sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t25.txt=\"Not found in\"");
-            sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t26.txt=\"%s\"",usersFile);
-            sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t27.txt=\"%s\"","");
-            sendCommand(TXbuffer);
-            sprintf(TXbuffer,"t28.txt=\"%s\"","");
-            sendCommand(TXbuffer);
+            //sprintf(TXbuffer,"t23.txt=\"%s\"","");
+            sendCommand("t23.txt=\"\"");
+            //sprintf(TXbuffer,"t24.txt=\"Callsign\"",nr);
+            sendCommand("t24.txt=\"Callsign\"");
+            //sprintf(TXbuffer,"t25.txt=\"Not found in\"");
+            sendCommand("t25.txt=\"Not found in\"");
+            //sprintf(TXbuffer,"t26.txt=\"in database\"",usersFile);
+            sendCommand("t26.txt=\"in database\"");
+            //sprintf(TXbuffer,"t27.txt=\"%s\"","");
+            sendCommand("t27.txt=\"\"");
+            //sprintf(TXbuffer,"t28.txt=\"%s\"","");
+            sendCommand("t28.txt=\"\"");
         }
         sprintf(text, "MMDVM.status.val=79");
         sendCommand(text);
