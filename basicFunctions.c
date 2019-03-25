@@ -435,7 +435,7 @@ void basicFunctions() {
         sendCommand("click S0,1");
     }
 
-    if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for P25
+    if ((page==4)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for P25
         int user;
 
         sendCommand(TXbuffer);
