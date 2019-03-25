@@ -200,7 +200,7 @@ void basicFunctions() {
         #define bcoEN	1472
         #define bcoDIS	25356
         #define pcoEN	0
-        #define pcoDIS	46486
+        #define pcoDIS	65535
 
         if (showModesStatus) {
             //Modes enabled/disabled
