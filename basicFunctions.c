@@ -526,4 +526,50 @@ void basicFunctions() {
         sendCommand("click S0,1");
     }
 
+    if ((page==5)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for P25
+        int user;
+
+        sendCommand(TXbuffer);
+
+        user=0;
+	if (strstr(TXbuffer,"Listening")==NULL) {
+            TXbuffer[strlen(TXbuffer)-1]=' ';
+            char* l=strchr(&TXbuffer[10], ' ');
+            if (l!=NULL) l[0]=0;
+            writelog(LOG_DEBUG,"Search for call [%s] \n",&TXbuffer[10]);
+            user=search_user_index_for_CALL(&TXbuffer[10],usersCALL_IDX,0,nmbr_users-1);
+            writelog(LOG_DEBUG,"- Found user [%s] for CALL %s",users[user].data1,&TXbuffer[10]);
+            if (user>0) {
+                sprintf(TXbuffer,"t13.txt=\"%s\"",users[user].data1);
+            	sendCommand(TXbuffer);
+            	sprintf(TXbuffer,"t14.txt=\"%s\"",users[user].data2);
+            	sendCommand(TXbuffer);
+            	sprintf(TXbuffer,"t15.txt=\"%s\"",users[user].data3);
+            	sendCommand(TXbuffer);
+            	sprintf(TXbuffer,"t16.txt=\"%s\"",users[user].data4);
+            	sendCommand(TXbuffer);
+            	sprintf(TXbuffer,"t17.txt=\"%s\"",users[user].data5);
+            	sendCommand(TXbuffer);
+            	sprintf(TXbuffer,"t18.txt=\"%s\"",users[user].data6);
+            	sendCommand(TXbuffer);
+	    } else {
+         	sendCommand("t13.txt=\"\"");
+                sendCommand("t14.txt=\"Callsign\"");
+                sendCommand("t15.txt=\"not found in\"");
+                sendCommand("t16.txt=\"in database\"");
+                sendCommand("t17.txt=\"\"");
+                sendCommand("t18.txt=\"\"");
+            }
+        } else {
+            sendCommand("t13.txt=\"\"");
+            sendCommand("t14.txt=\"\"");
+            sendCommand("t15.txt=\"\"");
+            sendCommand("t16.txt=\"\"");
+            sendCommand("t17.txt=\"\"");
+            sendCommand("t18.txt=\"\"");
+	}
+        sendCommand("MMDVM.status.val=129");
+        sendCommand("click S0,1");
+    }
+
 }
