@@ -296,7 +296,7 @@ void basicFunctions() {
 	
 
     //send user data if found
-    if ((page==1)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for D-Star
+    if (((page==1)||(page==3)||(page==4)||(page==5))&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for D-Star, YSF, P25 and NXDN
         int user;
 
         sendCommand(TXbuffer);
@@ -338,7 +338,14 @@ void basicFunctions() {
             sendCommand("t17.txt=\"\"");
             sendCommand("t18.txt=\"\"");
 	}
-        sendCommand("MMDVM.status.val=49");
+	if (page==1)
+            sendCommand("MMDVM.status.val=49");
+	else if (page==3)
+	    sendCommand("MMDVM.status.val=89");
+	else if (page==4)
+	    sendCommand("MMDVM.status.val=109");
+	else if (page==5)
+	    sendCommand("MMDVM.status.val=129");
         sendCommand("click S0,1");
     }
 
@@ -434,6 +441,7 @@ void basicFunctions() {
         sendCommand("MMDVM.status.val=78");
         sendCommand("click S0,1");
     }
+/*
     if ((page==3)&&(strstr(TXbuffer,"t0.txt")!=NULL)) { // for YSF
         int user;
 
@@ -571,5 +579,5 @@ void basicFunctions() {
         sendCommand("MMDVM.status.val=129");
         sendCommand("click S0,1");
     }
-
+*/
 }
