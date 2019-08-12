@@ -216,6 +216,8 @@ void basicFunctions() {
     //        sprintf(text, "A5.pco=%d",modeIsEnabled[C_YSFDMR] ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A6.bco=%d",modeIsEnabled[C_NXDN] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A6.pco=%d",modeIsEnabled[C_NXDN] ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A8.bco=%d",modeIsEnabled[C_POCSAG] ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A8.pco=%d",modeIsEnabled[C_POCSAG] ?  pcoEN : pcoDIS); sendCommand(text);
     
             //Internet
             sprintf(text, "N0.bco=%d",netIsActive[0] ?  bcoEN : bcoDIS); sendCommand(text);
