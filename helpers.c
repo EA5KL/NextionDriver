@@ -125,8 +125,8 @@ int getInternetStatus(int i){
 
     hostname = "brandmeister.network";
     if (i%4 == 1) hostname = "news.brandmeister.network";
-    if (i%4 == 2) hostname = "ask.brandmeister.network";
-    if (i%4 == 3) hostname = "wiki.brandmeister.network";
+    if (i%4 == 2) hostname = "www.google.es";
+    if (i%4 == 3) hostname = "www.youtube.com";
 
     hostinfo = gethostbyname (hostname);
 
