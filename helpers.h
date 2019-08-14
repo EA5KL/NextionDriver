@@ -39,9 +39,6 @@
 #define C_TRANSPARENT	23
 #define C_NEXTIONDRIVER	24
 
-#define C_DMR_XMODE 30
-#define C_YSF_XMODE 31
-
 int page;
 
 void getNetworkInterface(char* info);
