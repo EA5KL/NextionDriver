@@ -33,6 +33,19 @@
 #include "helpers.h"
 #include "basicFunctions.h"
 
+   int statusModeNet(int mode)
+   {
+      if (mode == C_DMR_XMODE) {
+	 if (modeIsEnabled[C_DMR]) {
+	    if ( (proc_find("MMDVMHost")) && (proc_find("DMR2YSF") || proc_find("DMR2NXDN")) )
+		   return(true);
+		else
+		   return(false);
+	 }
+      }
+   }
+
+
 void basicFunctions() {
 
     char text[100];
@@ -445,16 +458,5 @@ void basicFunctions() {
         sendCommand("MMDVM.status.val=78");
         sendCommand("click S0,1");
     }
-	
-   int statusModeNet(int mode)
-   {
-      if (mode == C_DMR_XMODE) {
-	 if (modeIsEnabled[C_DMR]) {
-	    if ( (proc_find("MMDVMHost")) && (proc_find("DMR2YSF") || proc_find("DMR2NXDN")) )
-		   return(true);
-		else
-		   return(false);
-	 }
-      }
-   }
+
 }
