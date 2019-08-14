@@ -40,7 +40,7 @@
       if (mode == C_DMR_XMODE) {
 	 if (modeIsEnabled[C_DMR]) {
 	    if ( (proc_find("MMDVMHost")) && (proc_find("DMR2YSF") || proc_find("DMR2NXDN")) ) {
-		   sprintf(text, "msg.txt=\"%d\"", proc_find("DMR2YSF"));
+		   sprintf(text, "msg.txt=\"%d-%d-%d\"", proc_find("MMDVMHost"), proc_find("DMR2YSF"), proc_find("DMR2NXDN"));
 		   sendCommand(text);
 		   return(1);
 	    }
