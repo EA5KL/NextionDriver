@@ -786,6 +786,7 @@ int main(int argc, char *argv[])
             start+=r;
         }
         s=strstr(buffer,ENDMRKR);
+	if (page==0) readConfig(); // Added to refresh the information of the home screen everytime we acessed it
         while (s!=NULL) {
             s[0]=0;
             strcpy(TXbuffer,buffer);
