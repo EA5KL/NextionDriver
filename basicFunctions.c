@@ -33,24 +33,6 @@
 #include "helpers.h"
 #include "basicFunctions.h"
 
-   int statusModeNet(int mode)
-   {
-      char text[100];
-
-      if (mode == C_DMR_XMODE) {
-	 if (modeIsEnabled[C_DMR]) {
-	    if ( (proc_find("MMDVMHost")>=1) && (proc_find("DMR2YSF")>=1 || proc_find("DMR2NXDN")>=1) ) {
-		   sprintf(text, "msg.txt=\"%d-%d-%d\"", (proc_find("MMDVMHost")>=1), (proc_find("DMR2YSF")>=1), (proc_find("DMR2NXDN")>=1));
-		   sendCommand(text);
-		   return(1);
-	    }
-	    else
-	      return(0);
-	 }
-      }
-   }
-
-
 void basicFunctions() {
 
     char text[100];
@@ -230,12 +212,12 @@ void basicFunctions() {
             sprintf(text, "A3.pco=%d",modeIsEnabled[C_YSF] ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A4.bco=%d",modeIsEnabled[C_P25] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A4.pco=%d",modeIsEnabled[C_P25] ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "A5.bco=%d",((modeIsEnabled[C_YSF]&&proc_find("MMDVMHost"))&&(proc_find("YSF2DMR")||proc_find("YSF2NXDN")||proc_find("YSF2P25"))) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "A5.pco=%d",((modeIsEnabled[C_YSF]&&proc_find("MMDVMHost"))&&(proc_find("YSF2DMR")||proc_find("YSF2NXDN")||proc_find("YSF2P25"))) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A5.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>=1)&&(proc_find("YSF2DMR")>=1||proc_find("YSF2NXDN")>=1||proc_find("YSF2P25")>=1)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A5.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>=1)&&(proc_find("YSF2DMR")>=1||proc_find("YSF2NXDN")>=1||proc_find("YSF2P25")>=1)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A6.bco=%d",modeIsEnabled[C_NXDN] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A6.pco=%d",modeIsEnabled[C_NXDN] ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "A7.bco=%d",statusModeNet(C_DMR_XMODE) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "A7.pco=%d",statusModeNet(C_DMR_XMODE) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A7.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>=1)&&(proc_find("DMR2YSF")>=1||proc_find("DMR2NXDN")>=1)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A7.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>=1)&&(proc_find("DMR2YSF")>=1||proc_find("DMR2NXDN")>=1)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A8.bco=%d",modeIsEnabled[C_POCSAG] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A8.pco=%d",modeIsEnabled[C_POCSAG] ?  pcoEN : pcoDIS); sendCommand(text);
     
