@@ -192,22 +192,22 @@ int readConfig(void) {
         }
         if (buffer[0] == '[') {
             ok=0;
-            if (strncmp(buffer, "[D-Star]", 8) == 0)         ok=C_DSTAR;
-            if (strncmp(buffer, "[DMR]", 5) == 0)         ok=C_DMR;
-            if (strncmp(buffer, "[System Fusion]", 15) == 0)     ok=C_YSF;
-            if (strncmp(buffer, "[P25]", 5) == 0)         ok=C_P25;
-            if (strncmp(buffer, "[NXDN]", 6) == 0)         ok=C_NXDN;
-            if (strncmp(buffer, "[POCSAG]", 6) == 0)         ok=C_POCSAG;
-            if (strncmp(buffer, "[D-Star Network]", 16) == 0)     ok=C_DSTARNET;
-            if (strncmp(buffer, "[DMR Network]", 13) == 0)     ok=C_DMRNET;
+            if (strncmp(buffer, "[D-Star]", 8) == 0)                 ok=C_DSTAR;
+            if (strncmp(buffer, "[DMR]", 5) == 0)                    ok=C_DMR;
+            if (strncmp(buffer, "[System Fusion]", 15) == 0)         ok=C_YSF;
+            if (strncmp(buffer, "[P25]", 5) == 0)                    ok=C_P25;
+            if (strncmp(buffer, "[NXDN]", 6) == 0)                   ok=C_NXDN;
+            if (strncmp(buffer, "[POCSAG]", 6) == 0)                 ok=C_POCSAG;
+            if (strncmp(buffer, "[D-Star Network]", 16) == 0)        ok=C_DSTARNET;
+            if (strncmp(buffer, "[DMR Network]", 13) == 0)           ok=C_DMRNET;
             if (strncmp(buffer, "[System Fusion Network]", 23) == 0) ok=C_YSFNET;
-            if (strncmp(buffer, "[P25 Network]", 13) == 0)     ok=C_P25NET;
-            if (strncmp(buffer, "[NXDN Network]", 14) == 0)     ok=C_NXDNNET;
-            if (strncmp(buffer, "[Info]", 6) == 0)         ok=C_INFO;
-            if (strncmp(buffer, "[Nextion]", 9) == 0)         ok=C_NEXTION;
-            if (strncmp(buffer, "[Log]", 5) == 0)         ok=C_LOG;
-            if (strncmp(buffer, "[Transparent Data]", 18) == 0) ok=C_TRANSPARENT;
-            if (strncmp(buffer, "[NextionDriver]", 15) == 0)     ok=C_NEXTIONDRIVER;
+            if (strncmp(buffer, "[P25 Network]", 13) == 0)           ok=C_P25NET;
+            if (strncmp(buffer, "[NXDN Network]", 14) == 0)          ok=C_NXDNNET;
+            if (strncmp(buffer, "[Info]", 6) == 0)                   ok=C_INFO;
+            if (strncmp(buffer, "[Nextion]", 9) == 0)                ok=C_NEXTION;
+            if (strncmp(buffer, "[Log]", 5) == 0)                    ok=C_LOG;
+            if (strncmp(buffer, "[Transparent Data]", 18) == 0)      ok=C_TRANSPARENT;
+            if (strncmp(buffer, "[NextionDriver]", 15) == 0)         ok=C_NEXTIONDRIVER;
         }
         char* key   = strtok(buffer, " \t=\r\n");
         if (key == NULL)
