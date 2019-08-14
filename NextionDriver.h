@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2017,2018 by Lieven De Samblanx ON7LDS
+ *   Copyright (C) 2017,2019 by Lieven De Samblanx ON7LDS & Mariano Sánchez EA5KL
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #if !defined(NextionDriver_H)
 #define NextionDriver_H
 
-#define NextionDriver_VERSION "1.231"
+#define NextionDriver_VERSION "1.232"
 
 /* the code to extract RX and TX freq and location has been
     included in MMDVMHost 20180910 and later, so
