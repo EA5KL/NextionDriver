@@ -242,10 +242,10 @@ void basicFunctions() {
             sprintf(text, "N7.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2NXDN")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "N8.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2P25")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "N8.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2P25")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "N9.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "N9.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "N10.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2NXDN")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "N10.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2NXDN")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N9.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2NXDN")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N9.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2NXDN")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N10.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N10.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
 
         }
         //Done
