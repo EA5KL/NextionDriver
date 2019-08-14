@@ -212,12 +212,12 @@ void basicFunctions() {
             sprintf(text, "A3.pco=%d",modeIsEnabled[C_YSF] ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A4.bco=%d",modeIsEnabled[C_P25] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A4.pco=%d",modeIsEnabled[C_P25] ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "A5.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>=1)&&(proc_find("YSF2DMR")>=1||proc_find("YSF2NXDN")>=1||proc_find("YSF2P25")>=1)) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "A5.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>=1)&&(proc_find("YSF2DMR")>=1||proc_find("YSF2NXDN")>=1||proc_find("YSF2P25")>=1)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A5.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2DMR")>0||proc_find("YSF2NXDN")>0||proc_find("YSF2P25")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A5.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2DMR")>0||proc_find("YSF2NXDN")>0||proc_find("YSF2P25")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A6.bco=%d",modeIsEnabled[C_NXDN] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A6.pco=%d",modeIsEnabled[C_NXDN] ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "A7.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>=1)&&(proc_find("DMR2YSF")>=1||proc_find("DMR2NXDN")>=1)) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "A7.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>=1)&&(proc_find("DMR2YSF")>=1||proc_find("DMR2NXDN")>=1)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A7.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0||proc_find("DMR2NXDN")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A7.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0||proc_find("DMR2NXDN")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A8.bco=%d",modeIsEnabled[C_POCSAG] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A8.pco=%d",modeIsEnabled[C_POCSAG] ?  pcoEN : pcoDIS); sendCommand(text);
     
@@ -228,18 +228,24 @@ void basicFunctions() {
             //Network connections
             sprintf(text, "N1.bco=%d",(modeIsEnabled[C_DSTARNET]&&(proc_find("ircddbgatewayd")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "N1.pco=%d",(modeIsEnabled[C_DSTARNET]&&(proc_find("ircddbgatewayd")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "N2.bco=%d",(modeIsEnabled[C_DMRNET]&&(proc_find("MMDVMHost")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "N2.pco=%d",(modeIsEnabled[C_DMRNET]&&(proc_find("MMDVMHost")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
-    //        sprintf(text, "N2.bco=%d",(modeIsEnabled[]&&(proc_find("DMRGateway")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
-    //        sprintf(text, "N2.pco=%d",(modeIsEnabled[]&&(proc_find("DMRGateway")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N2.bco=%d",(modeIsEnabled[C_DMRNET]&&(proc_find("DMRGateway")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N2.pco=%d",(modeIsEnabled[C_DMRNET]&&(proc_find("DMRGateway")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "N3.bco=%d",(modeIsEnabled[C_YSFNET]&&(proc_find("YSFGateway")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "N3.pco=%d",(modeIsEnabled[C_YSFNET]&&(proc_find("YSFGateway")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "N4.bco=%d",(modeIsEnabled[C_P25NET]&&(proc_find("P25Gateway")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "N4.pco=%d",(modeIsEnabled[C_P25NET]&&(proc_find("P25Gateway")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
-    //        sprintf(text, "N5.bco=%d",(modeIsEnabled[C_YSFDMRNET]&&(proc_find("")>0) ?  bcoEN : bcoDIS)); sendCommand(text);
-    //        sprintf(text, "N5.pco=%d",(modeIsEnabled[C_YSFDM_NET]&&(proc_find("")>0) ?  pcoEN : pcoDIS)); sendCommand(text);
-            sprintf(text, "N6.bco=%d",(modeIsEnabled[C_NXDNNET]&&(proc_find("MMDVMHost")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "N6.pco=%d",(modeIsEnabled[C_NXDNNET]&&(proc_find("MMDVMHost")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N5.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2DMR")>0) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N5.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2DMR")>0) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N6.bco=%d",(modeIsEnabled[C_NXDNNET]&&(proc_find("NXDNGateway")>0)) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N6.pco=%d",(modeIsEnabled[C_NXDNNET]&&(proc_find("NXDNGateway")>0)) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N7.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2NXDN")>0) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N7.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2NXDN")>0) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N8.bco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2P25")>0) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N8.pco=%d",(modeIsEnabled[C_YSF]&&(proc_find("MMDVMHost")>0)&&(proc_find("YSF2P25")>0) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N9.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N9.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2YSF")>0) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "N10.bco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2NXDN")>0) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "N10.pco=%d",(modeIsEnabled[C_DMR]&&(proc_find("MMDVMHost")>0)&&(proc_find("DMR2NXDN")>0) ?  pcoEN : pcoDIS); sendCommand(text);
 
         }
         //Done
