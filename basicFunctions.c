@@ -446,7 +446,7 @@ void basicFunctions() {
         sendCommand("click S0,1");
     }
 	
-   bool statusModeNet(int mode)
+   int statusModeNet(int mode)
    {
       if (mode == C_DMR_XMODE) {
 	 if (modeIsEnabled[C_DMR]) {
