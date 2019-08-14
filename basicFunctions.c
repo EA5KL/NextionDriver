@@ -212,12 +212,12 @@ void basicFunctions() {
             sprintf(text, "A3.pco=%d",modeIsEnabled[C_YSF] ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A4.bco=%d",modeIsEnabled[C_P25] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A4.pco=%d",modeIsEnabled[C_P25] ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "A5.bco=%d",(modeIsEnabled[C_YSF]&&isProcessRunning("MMDVMHost")&&(proc_find("YSF2DMR")||proc_find("YSF2NXDN")||proc_find("YSF2P25")) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "A5.pco=%d",(modeIsEnabled[C_YSF]&&isProcessRunning("MMDVMHost")&&(proc_find("YSF2DMR")||proc_find("YSF2NXDN")||proc_find("YSF2P25")) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A5.bco=%d",(modeIsEnabled[C_YSF]&&proc_find("MMDVMHost")&&(proc_find("YSF2DMR")||proc_find("YSF2NXDN")||proc_find("YSF2P25")) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A5.pco=%d",(modeIsEnabled[C_YSF]&&proc_find("MMDVMHost")&&(proc_find("YSF2DMR")||proc_find("YSF2NXDN")||proc_find("YSF2P25")) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A6.bco=%d",modeIsEnabled[C_NXDN] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A6.pco=%d",modeIsEnabled[C_NXDN] ?  pcoEN : pcoDIS); sendCommand(text);
-            sprintf(text, "A7.bco=%d",(modeIsEnabled[C_DMR]&&isProcessRunning("MMDVMHost")&&(proc_find("DMR2YSF")||proc_find("DMR2NXDN")) ?  bcoEN : bcoDIS); sendCommand(text);
-            sprintf(text, "A7.pco=%d",(modeIsEnabled[C_DMR]&&isProcessRunning("MMDVMHost")&&(proc_find("DMR2YSF")||proc_find("DMR2NXDN")) ?  pcoEN : pcoDIS); sendCommand(text);
+            sprintf(text, "A7.bco=%d",(modeIsEnabled[C_DMR]&&proc_find("MMDVMHost")&&(proc_find("DMR2YSF")||proc_find("DMR2NXDN")) ?  bcoEN : bcoDIS); sendCommand(text);
+            sprintf(text, "A7.pco=%d",(modeIsEnabled[C_DMR]&&proc_find("MMDVMHost")&&(proc_find("DMR2YSF")||proc_find("DMR2NXDN")) ?  pcoEN : pcoDIS); sendCommand(text);
             sprintf(text, "A8.bco=%d",modeIsEnabled[C_POCSAG] ?  bcoEN : bcoDIS); sendCommand(text);
             sprintf(text, "A8.pco=%d",modeIsEnabled[C_POCSAG] ?  pcoEN : pcoDIS); sendCommand(text);
     
