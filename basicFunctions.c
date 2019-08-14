@@ -38,9 +38,9 @@
       if (mode == C_DMR_XMODE) {
 	 if (modeIsEnabled[C_DMR]) {
 	    if ( (proc_find("MMDVMHost")) && (proc_find("DMR2YSF") || proc_find("DMR2NXDN")) )
-		   return(true);
+		   return(1);
 		else
-		   return(false);
+		   return(0);
 	 }
       }
    }
