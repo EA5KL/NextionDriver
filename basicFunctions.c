@@ -35,7 +35,7 @@
 
 void basicFunctions() {
 
-    char text[100];
+    char text[1800];
 
     if (strlen(TXbuffer)==0) return;
 
@@ -456,13 +456,12 @@ void basicFunctions() {
     }
 
     if (page==7) { // for LastHeard list
-       char pszRequest[1800]={0};
        char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
        char pszHostAddress[]="pi-star:raspberry@localhost";
  
-       sprintf(pszRequest, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
+       sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
        sendCommand("MMDVM.status.val=99");
-       sendCommand(pszRequest);
+       sendCommand(text);
     }
 
 }
