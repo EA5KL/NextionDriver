@@ -471,7 +471,6 @@ void LHlist(int page,int aant) {
         }
     }
 }
-------------------------------------------- End of old last heard code */
 
 
 void dumpLHlist(void) {
@@ -508,7 +507,7 @@ void sendScreenData(unsigned int pagenr) {
     }
     writelog(LOG_DEBUG,"Refresh Screen: sending fields done");
 }
-
+------------------------------------------- End of old last heard code */
 
 
 int search_group(int nr, group_t a[], int m, int n)
