@@ -67,7 +67,7 @@ void sendLHlist() {
 
 void basicFunctions() {
 
-    char text[1800];
+    char text[100];
 
     if (strlen(TXbuffer)==0) return;
 
