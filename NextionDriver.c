@@ -276,6 +276,9 @@ void handleButton(int received) {
                 if (RXbuffer[1]==0xFB){
                     updateDisplay();
                 } else
+                if (RXbuffer[1]==0xA0){
+                    sendLHlist();
+                } else {
                 if (RXbuffer[1]==0xF2){
                     dumpLHlist();
                 } else {
