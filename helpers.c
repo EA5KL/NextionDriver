@@ -366,6 +366,10 @@ int getDiskFree(int log){
   }
 }
 
+/* This code is an older version of the last heard list.
+   If after commenting it don't cause problems, could be deleted
+   ---------------------
+   
 #define LH_PAGES 	7
 #define LH_INDEXES 	20
 #define LH_FIELDS 	40
@@ -412,11 +416,11 @@ void addLH(char* displaydatabuf ) {
     102 : P25 source
     122 : NXDN source
     132 : POCSAG RIC
-*/
+
 
     test1=((statusval==42)||(statusval==62)||(statusval==70)||(statusval==82)||(statusval==102)||(statusval==122)||(statusval==132));
     if (test1) { writelog(LOG_DEBUG,"NO LH Inhibit\n "); LHinhibit=0; }
-/*
+    
      41 : D-Star listening
      61 : DMR listening1
      64 : DMR Call end1
@@ -425,7 +429,8 @@ void addLH(char* displaydatabuf ) {
      81 : YSF listening
     101 : P25 listening
     121 : NXDN listening
-*/
+    
+    
     test2=((statusval==41)||(statusval==61)||(statusval==69)||(statusval==81)||(statusval==101)||(statusval==121)||(statusval==131)
             ||(statusval==64)||(statusval==72)
             );
@@ -466,7 +471,7 @@ void LHlist(int page,int aant) {
         }
     }
 }
-
+------------------------------------------- End of old last heard code */
 
 
 void dumpLHlist(void) {
