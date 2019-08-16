@@ -37,37 +37,17 @@ void sendLHlist() {
 
     char text[1800];
 	
-    if (strlen(TXbuffer)==0) return;
-
-    if (time(NULL)>sleepTimeOut) {
-        sendCommand("sleep=0");
-        sleepTimeOut=time(NULL)+30;
-    }
-
-    if (strncmp(TXbuffer,"page ",5)==0) {
-        if (sleepWhenInactive) {
-            sendCommand("sleep=0"); usleep(1000);
-            sprintf(text,"ussp=%d",sleepWhenInactive);
-            sendCommand(text);
-        }
-        if (strcmp(TXbuffer,"page LastHeard")==0) {
-            page=7;
-        }
-    }
-
-    if (page==7) { // for LastHeard list
        char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
        char pszHostAddress[]="pi-star:raspberry@localhost";
  
        sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
        sendCommand("MMDVM.status.val=99");
        sendCommand(text);
-    }
 }
 
 void basicFunctions() {
 
-    char text[100];
+    char text[300];
 
     if (strlen(TXbuffer)==0) return;
 
