@@ -74,6 +74,9 @@ void basicFunctions() {
         if (strcmp(TXbuffer,"page POCSAG")==0) {
             page=6;
         }
+        if (strcmp(TXbuffer,"page LastHeard")==0) {
+            page=7;
+        }
     }
 
     if ((strncmp(TXbuffer,"page ",5)==0)&&(changepages==1)) {
