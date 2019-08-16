@@ -7,8 +7,8 @@ $i = 0;
 for ($i = 0;  ($i <= 14); $i++) { //Last 15 calls
         if (isset($lastHeard[$i])) {
                 $listElem = $lastHeard[$i];
-                echo substr(str_pad($listElem[1], 12), 0, 12)."|";
-                echo substr(str_pad($listElem[2], 10), 0, 12)."|";
+                echo substr(str_pad($listElem[1], 11), 0, 11)."|";
+                echo substr(str_pad($listElem[2], 10), 0, 11)."|";
                 echo substr(str_pad($listElem[4], 9), 0 , 9)."|";
 
                 if ($listElem[5] == "RF") {
