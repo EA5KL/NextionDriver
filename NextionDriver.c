@@ -278,7 +278,7 @@ void handleButton(int received) {
                 } else
                 if (RXbuffer[1]==0xA0){
                     sendLHlist();
-                } else {
+                } else
                 if (RXbuffer[1]==0xF2){
                     dumpLHlist();
                 } else {
