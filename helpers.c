@@ -406,7 +406,7 @@ void addLH(char* displaydatabuf ) {
     writelog(LOG_DEBUG,"  LH: page %d field %d is [%s]",page,field,split);
     writelog(LOG_DEBUG,"  LH: statusval %d",statusval);
 
-/*
+
      42 : Dstar type/my1/my2
      62 : DMR ID1
      70 : DMR ID2
@@ -419,7 +419,7 @@ void addLH(char* displaydatabuf ) {
     test1=((statusval==42)||(statusval==62)||(statusval==70)||(statusval==82)||(statusval==102)||(statusval==122)||(statusval==132));
     if (test1) { writelog(LOG_DEBUG,"NO LH Inhibit\n "); LHinhibit=0; }
  
-/*
+
      41 : D-Star listening
      61 : DMR listening1
      64 : DMR Call end1
@@ -439,7 +439,7 @@ void addLH(char* displaydatabuf ) {
 //printf("===page %d field %d index %d current[%s] split[%s] test[%c]\n",page,field,startdata[page],data[page][field][startdata[page]],split,test1?'Y':'N');
     if ( (page==0)||(test1) ) {
         startdata[page]++;
-//												if (page>0)printf("-----------New index !-----------\n");
+//if (page>0)printf("-----------New index !-----------\n");
     }
     if (startdata[page]>=LH_INDEXES) startdata[page]=1;
     i=startdata[page];
