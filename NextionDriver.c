@@ -96,7 +96,7 @@ void sendCommand(char *cmd){
 
         sendTransparentData(MMDVM_DISPLAY,cmd);
 
-        addLH(cmd);
+//        addLH(cmd);
     }
     if (!become_daemon)fflush(NULL);
 }
@@ -265,9 +265,9 @@ void handleButton(int received) {
                 if ((RXbuffer[1]==0xFE)&&(received==3)){
                     sendScreenData(RXbuffer[2]);
                 } else 
-                if ((RXbuffer[1]==0xFD)&&(received==4)){
-                    LHlist(RXbuffer[2],RXbuffer[3]);
-                } else
+//                if ((RXbuffer[1]==0xFD)&&(received==4)){
+//                    LHlist(RXbuffer[2],RXbuffer[3]);
+//                } else
                 if ((RXbuffer[1]==0xFC)&&(received==3)){
                     inhibit=RXbuffer[2];
                     if (inhibit==0xFE) inhibit=0;
@@ -278,9 +278,9 @@ void handleButton(int received) {
                 } else
                 if (RXbuffer[1]==0xA0){
                     sendLHlist();
-                } else
-                if (RXbuffer[1]==0xF2){
-                    dumpLHlist();
+//                } else
+//                if (RXbuffer[1]==0xF2){
+//                    dumpLHlist();
                 } else {
                 if ((RXbuffer[1]<0xF2)&&(received>2)&&(received<200)) {
                         writelog(LOG_NOTICE," Execute command \"%s\"",&RXbuffer[2]);
