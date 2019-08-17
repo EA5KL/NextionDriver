@@ -262,9 +262,9 @@ void handleButton(int received) {
         if (RXbuffer[0]==42) {
             writelog(LOG_NOTICE,"Received command 0x%02X",RXbuffer[1]);
             if (RXbuffer[1]>0xEF) {
-                if ((RXbuffer[1]==0xFE)&&(received==3)){
-                    sendScreenData(RXbuffer[2]);
-                } else 
+//                if ((RXbuffer[1]==0xFE)&&(received==3)){
+//                    sendScreenData(RXbuffer[2]);
+//                } else 
 //                if ((RXbuffer[1]==0xFD)&&(received==4)){
 //                    LHlist(RXbuffer[2],RXbuffer[3]);
 //                } else
