@@ -366,7 +366,8 @@ int getDiskFree(int log){
   }
 }
 
-   
+
+/***************************************** Old code for last heard list
 #define LH_PAGES 	7
 #define LH_INDEXES 	20
 #define LH_FIELDS 	40
@@ -413,7 +414,7 @@ void addLH(char* displaydatabuf ) {
     102 : P25 source
     122 : NXDN source
     132 : POCSAG RIC
-*/
+
 
     test1=((statusval==42)||(statusval==62)||(statusval==70)||(statusval==82)||(statusval==102)||(statusval==122)||(statusval==132));
     if (test1) { writelog(LOG_DEBUG,"NO LH Inhibit\n "); LHinhibit=0; }
@@ -427,7 +428,7 @@ void addLH(char* displaydatabuf ) {
      81 : YSF listening
     101 : P25 listening
     121 : NXDN listening
-*/    
+    
     
     test2=((statusval==41)||(statusval==61)||(statusval==69)||(statusval==81)||(statusval==101)||(statusval==121)||(statusval==131)
             ||(statusval==64)||(statusval==72)
@@ -487,7 +488,6 @@ p=2;{
     }
 }
 
-
 void sendScreenData(unsigned int pagenr) {
     int field;
     char text[100];
@@ -505,6 +505,7 @@ void sendScreenData(unsigned int pagenr) {
     }
     writelog(LOG_DEBUG,"Refresh Screen: sending fields done");
 }
+Old code for last heard list   ***************************************/
 
 
 int search_group(int nr, group_t a[], int m, int n)
