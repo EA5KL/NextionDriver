@@ -8,7 +8,7 @@ $LHlist = "";
 for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
         if (isset($lastHeard[$i])) {
                 $listElem = $lastHeard[$i];
-                $LHlist .= "t".strval($i+101).'.txt="';
+                $LHlist .= "LHt".strval($i+1).'.txt="';
                 $LHlist .= substr(str_pad($listElem[1], 11), 0, 11)."|";
                 $LHlist .= substr(str_pad($listElem[2], 11), 0, 11)."|";
                 $LHlist .= substr(str_pad($listElem[4], 9), 0 , 9)."|";
