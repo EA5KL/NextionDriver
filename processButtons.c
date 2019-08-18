@@ -32,9 +32,16 @@ void processButtons(unsigned char code) {
 char buf[100];
 
     //See the README file for how to define a button on the Nextion Display
+    if (code==0xA0) {
+	   sprintf(TXbuffer, "page=\"LastHeard\"");
+	   sendCommand(TXbuffer);
+	   sprintf(TXbuffer, "LHt1.txt=\"Botón pulsado y en la página\"");
+       sendCommand(TXbuffer);
+//     SendLHlist();
+    }
 
-    sprintf(buf, "msg.txt=\"Button pressed %d (%s)\"",  code, RXbuffer);
-    sendCommand(buf);
+//    sprintf(buf, "msg.txt=\"Button pressed %d (%s)\"",  code, RXbuffer);
+//    sendCommand(buf);
 
 }
 
