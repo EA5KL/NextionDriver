@@ -278,7 +278,7 @@ void handleButton(int received) {
                 } else
                 if (RXbuffer[1]==0xA0){
 		    sprintf(TXbuffer, "page=\"LastHeard\"");
-		    sendCommand(TXBuffer);
+		    sendCommand(TXbuffer);
 		    sprintf(TXbuffer, "LHt1.txt=\"Botón pulsado y en la página\"");
                     sendCommand(TXbuffer);
 //                    SendLHlist();
