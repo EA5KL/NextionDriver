@@ -299,7 +299,7 @@ void handleButton(int received) {
                 }}
             } else {
                 code=RXbuffer[1];
-//                memmove(&RXbuffer,&RXbuffer[2],512);
+//                memmove(&RXbuffer,&RXbuffer[2],512); // No se si me servira de algo mandar el buffer completo, si no, lo vuelvo a dejar como estaba
                 writelog(LOG_NOTICE," Command parameter \"%s\"",RXbuffer);
                 processButtons(code);
             }
