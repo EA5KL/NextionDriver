@@ -16,7 +16,7 @@
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#if !defined(processButtons_H)
+//#if !defined(processButtons_H)
 #define processButtons_H
 
 
