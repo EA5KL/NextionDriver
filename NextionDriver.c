@@ -299,7 +299,7 @@ void handleButton(int received) {
                 }}
             } else {
                 code=RXbuffer[1];
-                memmove(&RXbuffer,&RXbuffer[2],512);
+                memmove(&RXbuffer,&RXbuffer[0],512); //2
                 writelog(LOG_NOTICE," Command parameter \"%s\"",RXbuffer);
                 processButtons(code);
             }
