@@ -30,16 +30,36 @@
 //
 //============================================================================
 
+
+size_t handle_data(void *ptr, size_t size, size_t nmemb, void *stream) { 
+//    int numbytes = size*nmemb; 
+//    char lastchar = *((char *) ptr + numbytes - 1); 
+//    *((char *) ptr + numbytes - 1) = '\0'; 
+//    contents.append((char *)ptr); 
+//    contents.append(1,lastchar); 
+//    *((char *) ptr + numbytes - 1) = lastchar; 
+      text = ((char *)ptr);
+      return size*nmemb; 
+    } 
+
 void sendLHlist() {
 
     char text[1800];
 	
-       char pszResourcePath[]="admin/mmdvmhost/lh_nextion.php";
-       char pszHostAddress[]="pi-star:raspberry@localhost";
-
-       sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
-       sendCommand(text);
-       sendCommand("MMDVM.status.val=99");
+    CURL* curl = curl_easy_init(); 
+    if(curl) 
+        { 
+        curl_easy_setopt(curl, CURLOPT_URL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php"); 
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data); 
+        CURLcode res = curl_easy_perform(curl); 
+        curl_easy_cleanup(curl); 
+        if (res == 0) {
+           sendCommand(text);
+           sendCommand("MMDVM.status.val=98");
+	} else 
+           sendCommand("LHt1.txt=\"No data in last heard list\"");
+           sendCommand("MMDVM.status.val=99");
+        } 
 }
 
 
