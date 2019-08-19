@@ -35,7 +35,7 @@ void sendLHlist() {
        char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
        char pszHostAddress[]="pi-star:raspberry@localhost";
 
-       sprintf(buf, "LHt1.txt=\"Button pressed %d (%s)\"", code, RXbuffer);
+       sprintf(buf, "LHt1.txt=\"Button pressed (%s)\"", RXbuffer);
        sendCommand(text);
        sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
        sendCommand(text);
