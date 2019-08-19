@@ -33,18 +33,6 @@
 #include "helpers.h"
 #include "basicFunctions.h"
 
-void sendLHlist() {
-
-    char text[1800];
-	
-       char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
-       char pszHostAddress[]="pi-star:raspberry@localhost";
- 
-       sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
-       sendCommand(text);
-       sendCommand("MMDVM.status.val=99");
-}
-
 void basicFunctions() {
 
     char text[300];
