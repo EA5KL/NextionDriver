@@ -31,7 +31,7 @@
 //============================================================================
 
 
-size_t handle_data(void *ptr, size_t size, size_t nmemb, void *stream) { 
+int handle_data(*ptr, int size, int nmemb, *stream) { 
 //    int numbytes = size*nmemb; 
 //    char lastchar = *((char *) ptr + numbytes - 1); 
 //    *((char *) ptr + numbytes - 1) = '\0'; 
