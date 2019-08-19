@@ -20,7 +20,7 @@
 #define processButtons_H
 
 
-int handle_data(*ptr, int size, nmemb, *stream)
+int handle_data(char *ptr, int size, nmemb, char *stream)
 void sendLHlist();
 void processButtons(unsigned char code);
 
