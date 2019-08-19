@@ -37,7 +37,7 @@ void sendLHlist() {
 
        sprintf(text, "LHt1.txt=\"Button pressed (%s)\"", RXbuffer);
        sendCommand(text);
-       sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
+       sprintf(text, "LHt1.txt=\"GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n\"", pszResourcePath, pszHostAddress);
        sendCommand(text);
        sendCommand("MMDVM.status.val=99");
 }
