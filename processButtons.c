@@ -43,11 +43,11 @@ void sendLHlist() {
 
 void processButtons(unsigned char code) {
 
-char buf[100];
+char buf[300];
 
     //See the README file for how to define a button on the Nextion Display
     if (code==0xA0) {
-       sendCommand(SendLHlist());
+       sendCommand(sendLHlist());
      } else {
        sprintf(buf, "msg.txt=\"Button pressed %d (%s)\"",  code, RXbuffer);
        sendCommand(buf);
