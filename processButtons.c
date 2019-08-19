@@ -47,7 +47,7 @@ char buf[300];
 
     //See the README file for how to define a button on the Nextion Display
     if (code==0xA0) {
-       sendCommand(sendLHlist());
+       sendLHlist();
      } else {
        sprintf(buf, "msg.txt=\"Button pressed %d (%s)\"",  code, RXbuffer);
        sendCommand(buf);
