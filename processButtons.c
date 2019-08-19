@@ -46,6 +46,8 @@ void sendLHlist() {
 
     char text[1800];
 	
+    text ='LHt1.txt="DMR Slot 2 |HP2SM      |TG 214   |Net|  0.1| 0%|0.0%|"LHt2.txt="DMR Slot 1 |M6LSC      |TG 91    |Net|TX   |   |    |"LHt3.txt="DMR Slot 1 |KC3HKO     |TG 91    |Net| 16.3| 0%|0.0%|"LHt4.txt="DMR Slot 1 |KG5DGG     |TG 91    |Net|  1.9| 0%|0.0%|"LHt5.txt="DMR Slot 2 |EA3BR      |TG 214   |Net|  0.5| 0%|0.0%|"LHt6.txt="DMR Slot 2 |EA1HPO     |TG 214   |Net|  8.4| 0%|0.0%|"LHt7.txt="DMR Slot 1 |DO4LB      |TG 91    |Net|  0.5| 0%|0.0%|"LHt8.txt="DMR Slot 2 |CX1AAO     |TG 214   |Net|  4.8| 0%|0.0%|"LHt9.txt="DMR Slot 2 |EA7KEN     |TG 214   |Net| 15.6| 5%|0.0%|"LHt10.txt="DMR Slot 2 |EB6MY      |TG 214   |Net|  0.5| 0%|0.0%|"LHt11.txt="DMR Slot 2 |EA7JYC     |TG 214   |Net|  1.2| 0%|0.0%|"LHt12.txt="DMR Slot 1 |SO6AFT     |TG 91    |Net|  0.8| 0%|0.0%|"LHt13.txt="DMR Slot 2 |EB5IGQ     |TG 214   |Net|  0.5| 0%|0.0%|"LHt14.txt="DMR Slot 2 |EB2ANK     |TG 214   |Net|  2.0| 0%|0.0%|"LHt15.txt="DMR Slot 1 |IZ8LYA     |TG 91    |Net|  0.8| 0%|0.9%|"\';
+	
 //    CURL* curl = curl_easy_init(); 
 //    if(curl) 
 //        { 
@@ -53,7 +55,7 @@ void sendLHlist() {
 //        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data); 
 //        CURLcode res = curl_easy_perform(curl); 
 //        curl_easy_cleanup(curl); 
-int res = 0;
+int res = 1;
 	if (res != 0) {
            sendCommand(text);
            sendCommand("MMDVM.status.val=98");
