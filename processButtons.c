@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2017,2018 by Lieven De Samblanx ON7LDS
+ *   Copyright (C) 2017,2018 by Lieven De Samblanx ON7LDS & Mariano Sanchez EA5KL
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ void sendLHlist() {
        char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
        char pszHostAddress[]="pi-star:raspberry@localhost";
 
-       sprintf(buf, "LHt1.txt=\"Button pressed (%s)\"", RXbuffer);
+       sprintf(text, "LHt1.txt=\"Button pressed (%s)\"", RXbuffer);
        sendCommand(text);
        sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
        sendCommand(text);
