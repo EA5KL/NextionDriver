@@ -32,7 +32,7 @@ void sendLHlist() {
 
     char text[1800];
 	
-       char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
+       char pszResourcePath[]="admin/mmdvmhost/lh_nextion.php";
        char pszHostAddress[]="pi-star:raspberry@localhost";
 
        sprintf(text, "LHt1.txt=\"Button pressed (%s)\"", RXbuffer);
