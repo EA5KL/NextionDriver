@@ -54,7 +54,7 @@ void sendLHlist() {
 //        CURLcode res = curl_easy_perform(curl); 
 //        curl_easy_cleanup(curl); 
 int res = 0;
-	if (res !== 0) {
+	if (res != 0) {
            sendCommand(text);
            sendCommand("MMDVM.status.val=98");
 	} else {
