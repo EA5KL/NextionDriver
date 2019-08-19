@@ -33,8 +33,8 @@ char buf[100];
 
     //See the README file for how to define a button on the Nextion Display
 //    if (code==0xA0) {
-       sprintf(buf, "page=\"LastHeard\"");
-       sendCommand(buf);
+//       sprintf(buf, "page=\"LastHeard\"");
+//       sendCommand(buf);
 //       sprintf(buf, "LHt1.txt=\"Botón pulsado y en la página\"");
 //       sendCommand(buf);
 //     SendLHlist();
