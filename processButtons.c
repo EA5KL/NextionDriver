@@ -35,6 +35,8 @@ void sendLHlist() {
        char pszResourcePath[]="/admin/mmdvmhost/lh_nextion.php";
        char pszHostAddress[]="pi-star:raspberry@localhost";
  
+       sprintf(text, "LHt1.txt=\"Button pressed %d (%s)\"",  code, RXbuffer);
+       sendCommand(text);
        sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
        sendCommand(text);
        sendCommand("MMDVM.status.val=99");
