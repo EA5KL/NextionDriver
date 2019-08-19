@@ -20,7 +20,7 @@
 #define processButtons_H
 
 
-
+void sendLHlist();
 void processButtons(unsigned char code);
 
 #endif
