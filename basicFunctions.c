@@ -41,8 +41,8 @@ void sendLHlist() {
        char pszHostAddress[]="pi-star:raspberry@localhost";
  
        sprintf(text, "GET /%s HTTP/1.1\r\nHost: %s\r\nContent-Type: text/plain\r\n\r\n", pszResourcePath, pszHostAddress);
-       sendCommand("MMDVM.status.val=99");
        sendCommand(text);
+       sendCommand("MMDVM.status.val=99");
 }
 
 void basicFunctions() {
