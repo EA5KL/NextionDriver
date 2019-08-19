@@ -31,7 +31,7 @@
 //============================================================================
 
 
-int handle_data(*ptr, int size, int nmemb, *stream) { 
+int handle_data(char *ptr, int size, int nmemb, char *stream) { 
 //    int numbytes = size*nmemb; 
 //    char lastchar = *((char *) ptr + numbytes - 1); 
 //    *((char *) ptr + numbytes - 1) = '\0'; 
