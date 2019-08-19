@@ -31,35 +31,37 @@
 //============================================================================
 
 
-int handle_data(char *ptr, int size, int nmemb, char *stream) { 
+//int handle_data(char *ptr, int size, int nmemb, char *stream) { 
 //    int numbytes = size*nmemb; 
 //    char lastchar = *((char *) ptr + numbytes - 1); 
 //    *((char *) ptr + numbytes - 1) = '\0'; 
 //    contents.append((char *)ptr); 
 //    contents.append(1,lastchar); 
 //    *((char *) ptr + numbytes - 1) = lastchar; 
-      text = ((char *)ptr);
-      return size*nmemb; 
-    } 
+//      text = ((char *)ptr);
+//      return size*nmemb; 
+//    } 
 
 void sendLHlist() {
 
     char text[1800];
 	
-    CURL* curl = curl_easy_init(); 
-    if(curl) 
-        { 
-        curl_easy_setopt(curl, CURLOPT_URL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php"); 
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data); 
-        CURLcode res = curl_easy_perform(curl); 
-        curl_easy_cleanup(curl); 
-        if (res == 0) {
+//    CURL* curl = curl_easy_init(); 
+//    if(curl) 
+//        { 
+//        curl_easy_setopt(curl, CURLOPT_URL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php"); 
+//        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data); 
+//        CURLcode res = curl_easy_perform(curl); 
+//        curl_easy_cleanup(curl); 
+int res = 0;
+	if (res !== 0) {
            sendCommand(text);
            sendCommand("MMDVM.status.val=98");
-	} else 
+	} else {
            sendCommand("LHt1.txt=\"No data in last heard list\"");
            sendCommand("MMDVM.status.val=99");
         } 
+//}
 }
 
 
