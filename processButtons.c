@@ -48,22 +48,14 @@ void sendLHlist() {
 	
 int c, i, length = 65; // 65 is the length of the LHt(x) fields in nextion screen
 
-	sprintf(exit, "LHt8.txt=\"Hemos entrado\""); 
-        sendCommand(exit);
-	
     // Sustituir la cadena constante por la llamada al modulo lh_nextion.php	
     sprintf(text, "LHt1.txt=\"DMR Slot 2 |EB5EGK     |TG 214   |Net| 21.0| 0%|0.0%|\"LHt2.txt=\"DMR Slot 1 |TA3NHI     |TG 91    |Net|  0.5| 0%|0.0%|\"LHt3.txt=\"DMR Slot 2 |EA5GLZ     |TG 214   |Net| 41.5| 0%|0.0%|\"LHt4.txt=\"DMR Slot 1 |9V1MH      |TG 91    |Net|  0.4| 0%|0.0%|\"LHt5.txt=\"DMR Slot 1 |DA6RAM     |TG 91    |Net|  0.8| 0%|0.0%|\"LHt6.txt=\"DMR Slot 2 |EA5HFB     |TG 214   |Net|  0.8| 0%|0.0%|\"LHt7.txt=\"DMR Slot 2 |EA4LO      |TG 214   |Net|  0.5| 0%|0.0%|\"LHt8.txt=\"DMR Slot 1 |DW1HBF     |TG 91    |Net|  0.5| 0%|0.0%|\"LHt9.txt=\"DMR Slot 2 |EB4ERW     |TG 214   |Net|  0.5| 0%|0.0%|\"LHt10.txt=\"DMR Slot 2 |EA9SV      |TG 214   |Net|  0.5| 0%|0.0%|\"LHt11.txt=\"DMR Slot 1 |EA3GMP     |TG 91, 5 |Net|TX   |   |    |\"LHt12.txt=\"POCSAG     |DAPNET     |DAPNET Us|Net|  0.0| 0%|0.0%|\"LHt13.txt=\"DMR Slot 2 |EA5GK      |TG 214   |Net|  0.1| 0%|0.0%|\"LHt14.txt=\"DMR Slot 2 |EB4AXR     |TG 214   |Net|  0.5| 0%|0.0%|\"LHt15.txt=\"DMR Slot 1 |M0AUT      |TG 91    |Net|  0.8| 0%|0.0%|\"");
     for (i=1; i<=15; i++) {
 	c = 0;
 	while (c < length) { 
-//            exit[c] = text[(length * (i - 1)) + c];
-	sprintf(exit, "LHt9.txt=\"i=%d c=%d\"", i, c); 
-        sendCommand(exit);
-	sprintf(exit, "LHt10.txt=\"pos=%d\"", (length * (i - 1)) + c); 
-        sendCommand(exit);
+            exit[c] = text[(length * (i - 1)) + c];
             c++;
         }
-	sprintf(exit, "LHt11.txt=\"i=%d, c=%d\"", i, c); 
         sendCommand(exit);
     }
 	
