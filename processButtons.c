@@ -56,6 +56,7 @@ int c, i, length = 65; // 65 is the length of the LHt(x) fields in nextion scree
             exit[c] = text[(length * (i - 1)) + c];
             c++;
         }
+	sprintf(exit, "LHt10.txt=\"i=%d, c=%d\"", i, c); 
         sendCommand(exit);
     }
 	
