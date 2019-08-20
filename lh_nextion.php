@@ -29,7 +29,7 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
 
                 $LHlist .= str_pad($listElem[7], 3," ", STR_PAD_LEFT)."|";
                 $LHlist .= str_pad($listElem[8], 4," ", STR_PAD_LEFT)."|";
-                $LHlist .= '"\r\n';
+                $LHlist .= '"';
         }
 }
 echo $LHlist;
