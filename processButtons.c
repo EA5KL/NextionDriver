@@ -30,44 +30,38 @@
 //
 //============================================================================
 
+char lhreceived[780];
 
-//int handle_data(char *ptr, int size, int nmemb, char *stream) { 
-//    int numbytes = size*nmemb; 
-//    char lastchar = *((char *) ptr + numbytes - 1); 
-//    *((char *) ptr + numbytes - 1) = '\0'; 
-//    contents.append((char *)ptr); 
-//    contents.append(1,lastchar); 
-//    *((char *) ptr + numbytes - 1) = lastchar; 
-//      text = ((char *)ptr);
-//      return size*nmemb; 
-//    } 
+void function_pt(void *ptr, size_t size, size_t nmemb, void *stream){
+    lhreceived = ptr;
+}
 
 void sendLHlist() {
 
-    char text[1000], buf[70], exit[70];
+    char buf[52], exit[52];
+    int c, i, length = 52; // 52 is the length of the LHt(x) fields in nextion screen
 	
-int c, i, length = 52; // 52 is the length of the LHt(x) fields in nextion screen
+    CURL *curl;
+    curl = curl_easy_init();
+    if(curl) {
+      curl_easy_setopt(curl, CURLOPT_URL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php");
+      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, function_pt);
+      curl_easy_perform(curl);
+      curl_easy_cleanup(curl);
+    }
 
-    // Sustituir la cadena constante por la llamada al modulo lh_nextion.php	
-    sprintf(text, "DMR Slot 2 |EB5EGK     |TG 214   |Net| 21.0| 0%|0.0%DMR Slot 1 |TA3NHI     |TG 91    |Net|  0.5| 0%|0.0%DMR Slot 2 |EA5GLZ     |TG 214   |Net| 41.5| 0%|0.0%DMR Slot 1 |9V1MH      |TG 91    |Net|  0.4| 0%|0.0%DMR Slot 1 |DA6RAM     |TG 91    |Net|  0.8| 0%|0.0%DMR Slot 2 |EA5HFB     |TG 214   |Net|  0.8| 0%|0.0%DMR Slot 2 |EA4LO      |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 1 |DW1HBF     |TG 91    |Net|  0.5| 0%|0.0%DMR Slot 2 |EB4ERW     |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 2 |EA9SV      |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 1 |EA3GMP     |TG 91, 5 |Net|TX   |   |    POCSAG     |DAPNET     |DAPNET Us|Net|  0.0| 0%|0.0%DMR Slot 2 |EA5GK      |TG 214   |Net|  0.1| 0%|0.0%DMR Slot 2 |EB4AXR     |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 1 |M0AUT      |TG 91    |Net|  0.8| 0%|0.0%");
+ // Sustituir la cadena constante por la llamada al modulo lh_nextion.php	
+ // sprintf(text, "DMR Slot 2 |EB5EGK     |TG 214   |Net| 21.0| 0%|0.0%DMR Slot 1 |TA3NHI     |TG 91    |Net|  0.5| 0%|0.0%DMR Slot 2 |EA5GLZ     |TG 214   |Net| 41.5| 0%|0.0%DMR Slot 1 |9V1MH      |TG 91    |Net|  0.4| 0%|0.0%DMR Slot 1 |DA6RAM     |TG 91    |Net|  0.8| 0%|0.0%DMR Slot 2 |EA5HFB     |TG 214   |Net|  0.8| 0%|0.0%DMR Slot 2 |EA4LO      |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 1 |DW1HBF     |TG 91    |Net|  0.5| 0%|0.0%DMR Slot 2 |EB4ERW     |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 2 |EA9SV      |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 1 |EA3GMP     |TG 91, 5 |Net|TX   |   |    POCSAG     |DAPNET     |DAPNET Us|Net|  0.0| 0%|0.0%DMR Slot 2 |EA5GK      |TG 214   |Net|  0.1| 0%|0.0%DMR Slot 2 |EB4AXR     |TG 214   |Net|  0.5| 0%|0.0%DMR Slot 1 |M0AUT      |TG 91    |Net|  0.8| 0%|0.0%");
 	for (i=1; i<=15; i++) {
 	c = 0;
 	while (c < length) { 
-            exit[c] = text[(length * (i - 1)) + c];
+            exit[c] = lhreceived[(length * (i - 1)) + c];
             c++;
         }
 	sprintf(buf, "LHt%d.txt=\"%s\"", i, exit);
         sendCommand(buf);
     }
 	
-//    CURL* curl = curl_easy_init(); 
-//    if(curl) 
-//        { 
-//        curl_easy_setopt(curl, CURLOPT_URL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php"); 
-//        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, handle_data); 
-//        CURLcode res = curl_easy_perform(curl); 
-//        curl_easy_cleanup(curl); LHt1.txt="DMR Slot 2 |EB5EGK     |TG 214   |Net| 21.0| 0%|0.0%|"LHt2.txt="DMR Slot 1 |TA3NHI     |TG 91    |Net|  0.5| 0%|0.0%|"LHt3.txt="DMR Slot 2 |EA5GLZ     |TG 214   |Net| 41.5| 0%|0.0%|"LHt4.txt="DMR Slot 1 |9V1MH      |TG 91    |Net|  0.4| 0%|0.0%|"LHt5.txt="DMR Slot 1 |DA6RAM     |TG 91    |Net|  0.8| 0%|0.0%|"LHt6.txt="DMR Slot 2 |EA5HFB     |TG 214   |Net|  0.8| 0%|0.0%|"LHt7.txt="DMR Slot 2 |EA4LO      |TG 214   |Net|  0.5| 0%|0.0%|"LHt8.txt="DMR Slot 1 |DW1HBF     |TG 91    |Net|  0.5| 0%|0.0%|"LHt9.txt="DMR Slot 2 |EB4ERW     |TG 214   |Net|  0.5| 0%|0.0%|"LHt10.txt="DMR Slot 2 |EA9SV      |TG 214   |Net|  0.5| 0%|0.0%|"LHt11.txt="DMR Slot 1 |EA3GMP     |TG 91, 5 |Net|TX   |   |    |"LHt12.txt="POCSAG     |DAPNET     |DAPNET Us|Net|  0.0| 0%|0.0%|"LHt13.txt="DMR Slot 2 |EA5GK      |TG 214   |Net|  0.1| 0%|0.0%|"LHt14.txt="DMR Slot 2 |EB4AXR     |TG 214   |Net|  0.5| 0%|0.0%|"LHt15.txt="DMR Slot 1 |M0AUT      |TG 91    |Net|  0.8| 0%|0.0%|"
-
 //	if (res != 0) {
 //           sendCommand(text);
 //           sendCommand("MMDVM.status.val=98");
