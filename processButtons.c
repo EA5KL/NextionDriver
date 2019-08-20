@@ -43,6 +43,8 @@
 //    } 
 
 void sendLHlist() {
+	sprintf(exit, "LHt8.txt=\"Hemos entrado\""); 
+        sendCommand(exit);
 
     char text[1000], exit[70];
 	
@@ -53,7 +55,9 @@ int c, i, length = 65; // 65 is the length of the LHt(x) fields in nextion scree
     for (i=1; i<=15; i++) {
 	c = 0;
 	while (c < length) { 
-            exit[c] = text[(length * (i - 1)) + c];
+//            exit[c] = text[(length * (i - 1)) + c];
+	sprintf(exit, "LHt9.txt=\"i=%d, c=%d\"", i, c); 
+        sendCommand(exit);
             c++;
         }
 	sprintf(exit, "LHt10.txt=\"i=%d, c=%d\"", i, c); 
