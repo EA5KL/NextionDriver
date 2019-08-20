@@ -30,7 +30,7 @@
 //
 //============================================================================
 
-char lhreceived;
+char *lhreceived;
 
 void function_pt(void *ptr, size_t size, size_t nmemb, void *stream){
     lhreceived = ptr;
