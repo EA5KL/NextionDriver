@@ -47,7 +47,7 @@ void sendLHlist() {
     char text[1800];
 int res = 1;
 	
-    text ='LHt1.txt="DMR Slot 2 |HP2SM      |TG 214   |Net|  0.1| 0%|0.0%|"LHt2.txt="DMR Slot 1 |M6LSC      |TG 91    |Net|TX   |   |    |"LHt3.txt="DMR Slot 1 |KC3HKO     |TG 91    |Net| 16.3| 0%|0.0%|"LHt4.txt="DMR Slot 1 |KG5DGG     |TG 91    |Net|  1.9| 0%|0.0%|"LHt5.txt="DMR Slot 2 |EA3BR      |TG 214   |Net|  0.5| 0%|0.0%|"LHt6.txt="DMR Slot 2 |EA1HPO     |TG 214   |Net|  8.4| 0%|0.0%|"';
+    sprintf(text, 'LHt1.txt="DMR Slot 2 |HP2SM      |TG 214   |Net|  0.1| 0%|0.0%|"LHt2.txt="DMR Slot 1 |M6LSC      |TG 91    |Net|TX   |   |    |"LHt3.txt="DMR Slot 1 |KC3HKO     |TG 91    |Net| 16.3| 0%|0.0%|"LHt4.txt="DMR Slot 1 |KG5DGG     |TG 91    |Net|  1.9| 0%|0.0%|"LHt5.txt="DMR Slot 2 |EA3BR      |TG 214   |Net|  0.5| 0%|0.0%|"LHt6.txt="DMR Slot 2 |EA1HPO     |TG 214   |Net|  8.4| 0%|0.0%|"');
 	
 //    CURL* curl = curl_easy_init(); 
 //    if(curl) 
