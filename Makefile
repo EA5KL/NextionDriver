@@ -13,3 +13,4 @@ NextionDriver:
 
 clean:
 		$(RM) NextionDriver *.o *.d *.bak *~
+
