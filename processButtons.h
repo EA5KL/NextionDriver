@@ -21,6 +21,6 @@
 
 
 void sendLHlist();
-void processButtons(unsigned char code);
+void processButtons(unsigned char code, unsigned char param);
 
 #endif
