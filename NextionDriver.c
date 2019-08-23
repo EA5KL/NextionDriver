@@ -248,7 +248,7 @@ void updateDisplay(void) {
 
 
 void handleButton(int received) {
-    char code, text[150];
+    char text[150];
     if (received>1) {
         {
             sprintf(text,"RX: %d (",received);
@@ -292,10 +292,9 @@ void handleButton(int received) {
                         }
                 }}
             } else {
-                code=RXbuffer[1];
 //                memmove(&RXbuffer,&RXbuffer[2],512); // No se si me servira de algo mandar el buffer completo, si no, lo vuelvo a dejar como estaba
                 writelog(LOG_NOTICE," Command parameter \"%s\"",RXbuffer);
-                processButtons(code);
+                processButtons(RXbuffer[1], RXbuffer[2]);
             }
         }
     }
