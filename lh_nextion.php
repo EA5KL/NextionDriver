@@ -47,10 +47,11 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
     }
 }
 if (isset($_GET["from"])) {
-   if ($_GET["from"] == "NET")
+   if ($_GET["from"] == "NET") {
       echo $LHlistNET;
-   else if ($_GET["from"] == "LOC")
+   } else if ($_GET["from"] == "LOC") {
       echo $LHlistLOC;
+   }
 } else {
    echo "There is no last heard data"; // Fallback behaviour goes here
 }
