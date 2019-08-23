@@ -46,7 +46,7 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
                 $LHlistLOC .= str_pad($listElem[6], 5, " ", STR_PAD_LEFT)."|";
             }
             $LHlistLOC .= str_pad($listElem[7], 3," ", STR_PAD_LEFT)."|";
-            $LHlistLOC .= str_pad($listElem[8], 4," ", STR_PAD_LEFT);
+            $LHlistLOC .= $listElem[9];
         }
     }
 }
