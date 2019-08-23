@@ -38,18 +38,18 @@ void function_pt(void *ptr, size_t size, size_t nmemb, void *stream){
 
 void sendLHlist(unsigned char param) {
 
-    char buf[52], exit[52], LHlist[3];
+    char buf[52], exit[52], LHlistURL[74]
     int c, i, length = 52; // 52 is the length of the LHt(x) fields in nextion screen
 
     if (param == 0x01)
-       LHlist = "NET";
+       LHlistURL = "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=NET";
     else if(param == 0x02)
-       LHlist = "LOC";
+       LHlistURL = "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=LOC";
 	    
     CURL *curl;
     curl = curl_easy_init();
     if(curl) {
-      curl_easy_setopt(curl, CURLOPT_URL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=".LHlist);
+      curl_easy_setopt(curl, CURLOPT_URL, LHlistURL);
       curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, function_pt);
       curl_easy_perform(curl);
       curl_easy_cleanup(curl);
