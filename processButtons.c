@@ -42,9 +42,9 @@ void sendLHlist(unsigned char param) {
     int c, i, length = 52; // 52 is the length of the LHt(x) fields in nextion screen
 
     if (param == 0x01)
-       LHlistURL = "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=NET";
+       sprintf(LHlistURL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=NET");
     else if(param == 0x02)
-       LHlistURL = "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=LOC";
+       sprintf(LHlistURL, "http://pi-star:raspberry@localhost/admin/mmdvmhost/lh_nextion.php?from=LOC");
 	    
     CURL *curl;
     curl = curl_easy_init();
