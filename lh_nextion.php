@@ -25,15 +25,15 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
         }
         $LHlistNET .= str_pad($listElem[7], 3," ", STR_PAD_LEFT)."|";
         $LHlistNET .= str_pad($listElem[8], 4," ", STR_PAD_LEFT);
-	    if (($listElem[5] == "RF" && ($listElem[1] == "D-Star" || startsWith($listElem[1], "DMR") || $listElem[1] == "YSF" || $listElem[1]== "P25" || $listElem[1]== "NXDN")) {
-		    $LHlistLOC .= substr(str_pad($listElem[1], 11), 0, 11)."|"; 
-			$LHlistLOC .= substr(str_pad($listElem[2], 11), 0, 11)."|";
-			$LHlistNET .= substr(str_pad($listElem[4], 9), 0 , 9)."|";
+	if (($listElem[5] == "RF" && ($listElem[1] == "D-Star" || startsWith($listElem[1], "DMR") || $listElem[1] == "YSF" || $listElem[1]== "P25" || $listElem[1]== "NXDN")) {
+	    $LHlistLOC .= substr(str_pad($listElem[1], 11), 0, 11)."|"; 
+	    $LHlistLOC .= substr(str_pad($listElem[2], 11), 0, 11)."|";
+	    $LHlistLOC .= substr(str_pad($listElem[4], 9), 0 , 9)."|";
             if ($listElem[5] == "RF") {
                 $LHlistLOC .= "RF |";
             } else {
                 $LHlistLOC .= str_pad($listElem[5], 3)."|";
-			}
+	    }
             if ($listElem[6] == null) {
                 $LHlistLOC .= "TX   |";
             } else if ($listElem[6] == "SMS") {
@@ -42,7 +42,7 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
                 $LHlistLOC .= str_pad($listElem[6], 5, " ", STR_PAD_LEFT)."|";
             }
             $LHlistLOC .= str_pad($listElem[8], 4," ", STR_PAD_LEFT)."|";
-			$LHlistLOC .= str_pad($listElem[9], 7," ", STR_PAD_LEFT);	
+	    $LHlistLOC .= str_pad($listElem[9], 7," ", STR_PAD_LEFT);	
         }
     }
 }
