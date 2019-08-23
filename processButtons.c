@@ -38,7 +38,7 @@ void function_pt(void *ptr, size_t size, size_t nmemb, void *stream){
 
 void sendLHlist(unsigned char param) {
 
-    char buf[52], exit[52], LHlistURL[74]
+    char buf[52], exit[52], LHlistURL[74];
     int c, i, length = 52; // 52 is the length of the LHt(x) fields in nextion screen
 
     if (param == 0x01)
