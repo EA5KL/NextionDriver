@@ -33,11 +33,11 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
             $LHlistLOC .= substr(str_pad($listElem[1], 11), 0, 11)."|";
             $LHlistLOC .= substr(str_pad($listElem[2], 11), 0, 11)."|";
             $LHlistLOC .= substr(str_pad($listElem[4], 9), 0 , 9)."|";
-            if ($listElem[5] == "RF") {
-                $LHlistLOC .= "RF |";
-            } else {
-                $LHlistLOC .= str_pad($listElem[5], 3)."|";
-            }
+//            if ($listElem[5] == "RF") {
+//                $LHlistLOC .= "RF |";
+//            } else {
+//                $LHlistLOC .= str_pad($listElem[5], 3)."|";
+//            }
             if ($listElem[6] == null) {
                 $LHlistLOC .= "TX   |";
             } else if ($listElem[6] == "SMS") {
