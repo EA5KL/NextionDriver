@@ -31,7 +31,7 @@ for ($i = 0;  ($i <= 14); $i++) { // Last 15 calls
         // Last heard list RF received
         if ($listElem[5] == "RF" && ($listElem[1] == "D-Star" || startsWith($listElem[1], "DMR") || $listElem[1] == "YSF" || $listElem[1]== "P25" || $listElem[1]== "NXDN")) {
             $LHlistLOC .= substr(str_pad($listElem[1], 11), 0, 11)."|";
-            $LHlistLOC .= substr(str_pad($listElem[2], 11), 0, 11)."|";
+            $LHlistLOC .= substr(str_pad($listElem[2], 11), 0, 10)."|";
             $LHlistLOC .= substr(str_pad($listElem[4], 9), 0 , 9)."|";
 //            if ($listElem[5] == "RF") {
 //                $LHlistLOC .= "RF |";
