@@ -23,6 +23,7 @@
 #include <curl/curl.h>
 
 #include "NextionDriver.h"
+#include "basicFunctions.h"
 
 //============================================================================
 //
@@ -78,11 +79,13 @@ void processButtons(unsigned char code, unsigned char param) {
 char buf[300];
 
     //See the README file for how to define a button on the Nextion Display
-    if (code==0xA0) {
+    if (code==0xA0) { // A0 Show last heard list. Parameters: 01 for NET users, 02 for LOCal users
        sendLHlist(param);
-     } else {
-       sprintf(buf, "msg.txt=\"Button pressed %d (%s)\"", code, RXbuffer);
-       sendCommand(buf);
-     }
+    } else if (code==0xA1) { // A1 Refresh screens when changed in Nextion. Parameters: Number of screen to refresh 
+       basicFunctions(param);
+    } else {
+      sprintf(buf, "msg.txt=\"Button pressed %d (%s)\"", code, RXbuffer);
+      sendCommand(buf);
+    }
 }
 
