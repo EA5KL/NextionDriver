@@ -20,6 +20,6 @@
 #define basicFunctions_H
 
 
-void basicFunctions();
+void basicFunctions(unsigned char param);
 
 #endif
