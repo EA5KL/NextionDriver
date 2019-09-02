@@ -33,7 +33,7 @@
 #include "helpers.h"
 #include "basicFunctions.h"
 
-void basicFunctions() {
+void basicFunctions(unsigned char param) {
 
     char text[300];
 
