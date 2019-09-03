@@ -410,7 +410,7 @@ void checkListeningSocket(void) {
 
 void talkToNextion(void) {
     if (strlen(TXbuffer)>0) writelog(LOG_DEBUG,"RX:   %s",TXbuffer);
-    basicFunctions();
+    basicFunctions(0x00);
     processCommands();
     sendCommand(TXbuffer);
     checkSerial();
