@@ -126,15 +126,14 @@ void basicFunctions(unsigned char param) {
         //CPU temperature
         deviceInfoFile = fopen ("/sys/class/thermal/thermal_zone0/temp", "r");
         if (deviceInfoFile == NULL) {
-            sprintf(text, "t20.txt=\"?\"");
+            sprintf(text, "t20.txt=\"???\"");
         } else {
             fscanf (deviceInfoFile, "%lf", &val);
             val /= 1000;
 
             sprintf(text, "t20.txt=\"%2.2f%cC\"", val, 176);
             /*
-            If you live in one of the 5 countries (Bahamas, Belize, Cayman Islands,
-             Palau, US) where they use degrees F, you could comment the line above
+            If you live in one of the countries where they use degrees F, you could comment the line above
              and uncomment the following line :                                      */
             //val=(val*1.8)+32;  sprintf(text, "t20.txt=\"%2.1f%cF\"", val, 176);
 
