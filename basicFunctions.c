@@ -122,7 +122,7 @@ void basicFunctions(unsigned char param) {
         FILE *deviceInfoFile;
         double val;
 //see basicFunction.h for info about defining the XTRA condition
-#ifdef XTRA
+//#ifdef XTRA
         //CPU temperature
         deviceInfoFile = fopen ("/sys/class/thermal/thermal_zone0/temp", "r");
         if (deviceInfoFile == NULL) {
@@ -140,7 +140,7 @@ void basicFunctions(unsigned char param) {
             fclose(deviceInfoFile);
         }
         sendCommand(text);
-#endif
+//#endif
 
        //CPU frequency
         deviceInfoFile = fopen ("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq", "r");
