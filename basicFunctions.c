@@ -130,13 +130,11 @@ void basicFunctions(unsigned char param) {
         } else {
             fscanf (deviceInfoFile, "%lf", &val);
             val /= 1000;
-            val = 99.9;
             sprintf(text, "t20.txt=\"%4.1f%cC\"", val, 176);
             /*
             If you live in one of the countries where they use degrees F, you could comment the line above
              and uncomment the following line :                                      */
             //val=(val*1.8)+32;  sprintf(text, "t20.txt=\"%4.1f%cF\"", val, 176);
-
             fclose(deviceInfoFile);
         }
         sendCommand(text);
