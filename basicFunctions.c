@@ -93,7 +93,8 @@ void basicFunctions(unsigned char param) {
     //       and send to display
     //  * send RX frequency and location (info from MMDVM.ini)
     //--------------------------------------------------------------
-
+	
+if ((page==0)||(param == 0x01)) {
     //MMDVM is doing a clean shutdown.
     if ((page==0)&&(strstr(TXbuffer,"MMDVM STOPPED")>0)){
         sprintf(text, "t30.txt=\"\"");
@@ -253,9 +254,9 @@ void basicFunctions(unsigned char param) {
         sendCommand(text);
         sendCommand("click S0,1");
     }
+}
 
-
-    //send TG name if found for TS1
+	//send TG name if found for TS1
     if ((page==2)&&(strstr(TXbuffer,"t1.txt")!=NULL)) {
         char *TGname;
         int nr,TGindex;
